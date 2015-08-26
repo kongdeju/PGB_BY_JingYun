@@ -1,0 +1,185 @@
+@CHARSET "UTF-8";
+/* 以下是从页面中摘取的相关样式文件  */
+/* 共用样式 */
+.clear{clear:both;}
+.hide{display:none;}
+.position{position:absolute;}
+.hand{cursor:pointer;}
+.hand-default{cursor:default}
+.inline{display: inline-block;}
+.collapse{border-collapse: collapse;}
+/* 字体 */
+.font18{font-size: 18px;}
+.font10{font-size: 10px;}
+.f12{font-size: 12px}
+.font12{font:12px Candara,Arial,Helvetica,sans-serif;}
+.font14{font: 14px Candara, Arial,Helvetica,sans-serif;}
+.font-i18{font:italic bold 18px Georgia;}
+/* 字体颜色 */
+.colorGrey{color:#666;}
+.colorGrey7{color:#777;}
+.textColorWhite{color:#fff;}
+.textLilac{color:#D6B8CE;}
+/* 文字排版定义 */
+.text-center{text-align: center;}
+.text-right{text-align: right;}
+.text-top{vertical-align:top}
+/* 背景色 */
+.colorBlue{background-color: #8fb3cd;}
+.colorWhite{background: #fff;}
+.color-e5{background: #E5E5E5;}
+/* 浮动 */
+.pull-left{float:left;}
+.pull-right{float:right;}
+/* 外边距定义 */
+.margin_3{margin:3px;}
+.mar30{margin-left:30px;}
+.maR10{margin-right:10px}
+.margin10{margin:10px 0;}
+/* 内边距定义 */
+.padding10{padding:10px 0;}
+.padding30{padding:30px 0;}
+
+.pa5{padding:5px;}
+.pa10{padding:10px;}
+
+.top3{padding-top: 3px;}
+.top10{padding-top: 10px;}
+.left3{padding-left:3px;}
+.bottom3{padding-bottom: 3px;}
+/* 高 定义 */
+.height21{height:21px;}
+.height23{height:23px;}
+.height26{height:26px;}
+/* 边框定义 */
+.line{border: solid;}
+.border-none{border:none;}
+.border-Grey{border: solid 1px #A3A3A3;}
+/* 宽度 */
+.width50{width: 50px;}
+.width55{width: 55px;}
+.width60{width: 60px;}
+.width200{width: 200px;}
+.width217{width: 217px;}
+.width-auto{width:100%;}
+/* 圆角 */
+.se-radius{border-radius:3px;padding:0px 2px;}
+/* 页面中需要的样式 */
+body {
+	/* background: #f6f8f8;*/
+cursor: auto;padding-top: 45px;}
+
+/* 导航中上传数据需要的模块 start */
+.indsetData{
+	border:none !important;
+	}
+/* 导航中上传数据需要的模块 end */
+
+/*PGB头部的搜索框 */
+.pgb-head-search{padding:12px 0;}
+.pgb-search-box{background: #eef6f9;}
+.pgb-search{width: 200px;padding:2px;}
+#search_field{border: none;width: 200px;}
+#search{padding-right:5px;font-size:15px;}
+.lessen-btn{padding:0px 3px;}
+.menu-line-height{line-height:50px;}
+#errorDiv{width: 800px;}
+#cytobandsTable{margin-bottom: 10px;}
+#chrNumTd{font:16px Candara,Arial,Helvetica;}
+.line-title{width: 1108px;height: 13px;}
+#userIndex{width: 951px;border-left: solid 1px #666;border-right: solid 1px #aaa;height:10px;}
+#thRefTrack1{background: #eff3ff;}
+.track-choose{width:750px;margin-top:20px;}
+.verticalLine{background: rgba(255,255,255,0);border-right: dotted 1px #000;z-index:48;}
+.verLine-box{z-index:48;}
+.verLine2-box{z-index:500;}
+.indexSpan{border: 1px solid #ADADAD;z-index:49;}
+#tabContentDiv li{font:12px Candara,Arial,Helvetica;}
+.urlInfo{max-height: 20px;}
+.url{width: 250px;}
+.chr{width: 150px;}
+.del{width: 50px;}
+#chrSelectDiv{z-index: 1000;}
+.more_track_mode{margin-top: 5px; margin-bottom: 20px;}
+#uploadfile_configureText{width: 100%; height: 168; resize: none;}
+.remove_track_mode{width: 653px;}
+#externals_container{min-height: 166px;}
+#externals_container label{font-size: 12px;}
+.decoriteminfo{z-index:5;left:1005px; top:611px;}
+.tracksettingTd{
+	padding:0px;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	overflow:hidden;
+	background:rgba(0,0,0,0.85);
+	-moz-box-shadow:5px 5px 5px #888;
+	-webkit-box-shadow:5px 5px 5px #888;
+	box-shadow:5px 5px 5px #888;
+}
+#detailInforLoading,.personal01{height: 30px; padding-top: 20px;}
+#tooltip_symbo{padding:0px 10px;font:italic bold 18px Georgia;}
+.decorTd{padding-right:10px;font-size: 12px;}
+.decorTdSpan{font-size:14px;}
+#tooltip_scale{padding:0px 10px 10px 10px;font-size: 12px;}
+.decorTd02{
+	border-top:solid 1px #A46C96;
+	border-bottom:solid 1px #8F5A82;
+	}
+.hook39{
+	padding-left: 20px;
+	padding-right: 10px;
+	background-color: transparent;
+	font-size: 12px;
+	}
+.bait131{height:300px;overflow-y:scroll; font-size: 12px;}
+#decoriteminfosaysajax{margin: 10px;font-size: 12px; width: 300px;}
+#variantDetailTooltip{z-index:51;border-collapse: collapse;}
+.variantBorder{
+	background: rgba(0,0,0,0.85);
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-moz-box-shadow:5px 5px 5px #888;
+	-webkit-box-shadow:5px 5px 5px #888;
+	box-shadow:5px 5px 5px #888;
+	}
+
+.varDetaLoad{height: 30px; padding-top: 15px; width: 300px;}
+.varDetaCon{padding: 10px; width:300px;height:350px;overflow-y:auto}
+
+.readToolTab{border-collapse: collapse;width:300px;height:300px;overflow-y:auto;}
+.readconTd{font:italic bold 12px Georgia;}
+.repeat01{z-index:51;border-collapse: collapse;}
+.repeatMask01{width:300px;height:120px;overflow-y:auto;}
+.repeatMask02{width:300px;word-break:break-all;}
+.var03{z-index:51;}
+.varOnPP01{width:300px;height:350px;overflow-y:auto;}
+.per01{z-index: 51; left: 1005px; top:611px;}
+.personal02{width:300px;height:360px;overflow-y:auto;}
+.personal03{
+	padding-left:10px;
+	padding-right:10px;
+	}
+.per05{padding:10px;padding-top:0px;}
+.struct01{
+	padding-left:20px;
+	padding-right:10px;}
+.trnode01{border-bottom:solid 1px #8F5A82;}
+.subTit{margin:5px;padding-top:5px;}
+.bjw01{width:790px;height:620px;}
+.bjw02{width:790px;}
+.bjw03{width:600px;}
+.bjw04{width:170px; max-height:570px; overflow:auto;}
+#gene_table{width:770px;max-height:600px;overflow:auto;}
+.info01{border: 1px #ccc solid}
+/* 数据展示模块 */
+.data-show-mode{width:400px;text-align:center;padding-bottom:15px;}
+.data-show-btn{
+	background:#8fb3cd;
+	border-radius:3px;
+	border:none;
+	color:#fff;
+	font-size: 16px;
+	line-height:41px;
+	padding:0 40px;
+	cursor: pointer;
+}

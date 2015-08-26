@@ -18,13 +18,13 @@ var ppBG_rgb = "rgb(255, 255, 212)";
 var ppBGhover = "#fed98e";
 var ppBGhover_rgb = "rgb(254, 217, 142)";
 
-// Molecular traits background 
+// Molecular traits background
 var pmBG = "#fee5d9";
 var pmBG_rgb = "rgb(254, 229, 217)";
 var pmBGhover = "#fcae91";
 var pmBGhover_rgb = "rgb(252, 174, 145)";
 
-// Phenotype background 
+// Phenotype background
 var pdBG = "#c7e9c0";
 var pdBG_rgb = "rgb(199, 233, 192)";
 var pdBGhover = "#a1d99b";
@@ -50,7 +50,7 @@ $(document).ready(function() {
 	document.onmousemove = mouseMove;
 
 	document.getElementById("refTrack1").addEventListener("mouseover", refSeqMouseover, true);
-	
+
 	$(document).bind("mousedown", function(){
 		isMousedownOnRefCanvas = true;
 		var verticalLine = $(document.getElementById("verticalLine"));
@@ -311,7 +311,7 @@ function refSeqMouseover(ev) {
 	verticalLine.css("left", mouseCoordinates.x - 2);
 	verticalLine.width(1);
 	verticalLine.height(divTrackHeight);
-	
+
 	verticalLine2.css("top", div_ppContent_top);
 	verticalLine2.css("left", mouseCoordinates.x - 2);
 	verticalLine2.width(1);
@@ -364,7 +364,7 @@ function refSeqMousemove(ev) {
 	verticalLine.css("left", mouseCoordinates.x - 2);
 	verticalLine.width(1);
 	verticalLine.height(divTrackHeight);
-	
+
 	verticalLine2.css("top", div_ppContent_top);
 	verticalLine2.css("left", mouseCoordinates.x - 2);
 	verticalLine2.width(1);
@@ -547,7 +547,7 @@ function canvasClick(evt) {
 	var trNode = eventTarget.parentNode.parentNode;
 	var trackId = trNode.id;
 	var i, j,k;
-	
+
 	evtCanvasX = evtMouseCoods.x - $(eventTarget).position().left;
 	evtCanvasY = evtMouseCoods.y - $(eventTarget).position().top;
 
@@ -580,7 +580,7 @@ function canvasClick(evt) {
 				document.body.style.cursor = "auto";
 			});
 			document.body.addEventListener("mousedown", mousedownOutsideTooltip, false);
-						
+
 			//Ajax to get the gene details
 			getDetailHttpRequest(trackId, trackItems[i].details[j].id, trackItems[i].details[j].from, trackItems[i].details[j].to);
 		}
@@ -646,7 +646,7 @@ function handle_getDetailHttpRequest(){
 					intros[intros.length - 1].to = subElementNodes[i].getElementsByTagName(xmlTagTo)[0].childNodes[0].nodeValue;
 				}
 			}*/
-			
+
 			var trackId = XMLDoc.getElementsByTagName(xmlTagElements)[0].getAttribute(xmlAttributeId);
 			var geneType,url;
 			if(trackId == "knownGene"){
@@ -660,7 +660,7 @@ function handle_getDetailHttpRequest(){
 				url = "http://www.ncbi.nlm.nih.gov/nuccore/" + geneId;
 			}
 
-			
+
 			//output the information to tooltip
 			document.getElementById("tooltip_symbol").innerHTML = geneSymbol;
 			document.getElementById("tooltip_id").innerHTML = geneId;
@@ -669,7 +669,7 @@ function handle_getDetailHttpRequest(){
 				window.open(url);
 			};
 			document.getElementById("tooltip_scale").innerHTML = chrNum + ":" + geneFrom + "-" + geneTo + " " + geneDirection;
-			
+
 			var structureDetails1 = "", structureDetails2 = "";
 			structureDetails1 = structureDetails1 + exons.length +" exons"+"<br>" + intros.length + " introns";
 			//structureDetails1 = structureDetails1 + exons.length +" exons"+"<br>" + intros.length + " intros" + "<br>" + UTRs.length + " UTRs";
@@ -703,7 +703,7 @@ function handle_getDetailHttpRequest(){
 			}
 			structureDetails2 = structureDetails2 + "<\/div>";
 			document.getElementById("bait39").innerHTML = structureDetails1 + structureDetails2;
-			
+
 			$(document.getElementById("detailInforLoading")).css("display","none");
 			$(document.getElementById("decoriteminfosays")).css("display","block");;
 		}
@@ -719,7 +719,7 @@ function canvasClickForPersonalGene(evt) {
 	var trNode = eventTarget.parentNode.parentNode.parentNode;
 	var trackId = trNode.id;
 	var j;
-	
+
 	if(personalPinned){
 		evtCanvasX = evtMouseCoods.x - $(eventTarget).position().left;
 		evtCanvasY = evtMouseCoods.y - $(eventTarget).position().top;
@@ -727,7 +727,7 @@ function canvasClickForPersonalGene(evt) {
 		evtCanvasX = evtMouseCoods.x - $("#personalPannel").position().left - $(eventTarget).position().left;
 		evtCanvasY = evtMouseCoods.y - $("#personalPannel").position().top - $(eventTarget).position().top;
 	}
-	
+
 	if(trackId == personalPannel.Panno.id){
 		for( j = 0; j < personalPannel.Panno.details.length; j++) {
 			if(evtCanvasX >= personalPannel.Panno.details[j].left && evtCanvasX <= personalPannel.Panno.details[j].right && evtCanvasY >= personalPannel.Panno.details[j].top && evtCanvasY <= personalPannel.Panno.details[j].bottom) {
@@ -742,7 +742,7 @@ function canvasClickForPersonalGene(evt) {
 		//	var orginal_position_x = evtCanvasX + $(eventTarget).position().left - 15;
 		//	if(orginal_position_y+$("#personalPannel").position().top + 380 > document.body.clientHeight+document.body.scrollTop){
 		//		orginal_position_y = document.body.clientHeight+document.body.scrollTop-$("#personalPannel").position().top - 380
-		//	} 
+		//	}
 		//	if(orginal_position_x+$("#personalPannel").position().left + 310 > document.body.clientWidth+document.body.scrollLeft){
 		//		orginal_position_x = document.body.clientWidth+document.body.scrollLeft-$("#personalPannel").position().left - 310
 		//	}
@@ -767,7 +767,7 @@ function canvasClickForPersonalGene(evt) {
 			$(document.getElementById("personalGeneDetail")).mouseover(function(){
 				document.body.removeEventListener('mousedown', mouseLeftPersonalGeneDetailClickHide, false);
 			});*/
-						
+
 			//Ajax to get the gene details
 			getPersonalGeneDetailRequest(trackId, personalPannel.Panno.details[j].id, personalPannel.Panno.details[j].from, personalPannel.Panno.details[j].to);
 		}
@@ -927,7 +927,7 @@ function handle_getPersonalGeneDetailRequest(){
 				window.open(url);
 			};
 			document.getElementById("personalGeneDetailScale").innerHTML = chrNum + ":" + geneFrom + "-" + geneTo + " " + geneDirection;
-			
+
 			var structureDetails1 = "", structureDetails2 = "";
 			structureDetails1 = structureDetails1 + exons.length +" exons"+"<br>" + introns.length + " introns";
 			structureDetails2 = structureDetails2 + "<div style=\"color:#D6B8CE; font-size: 12px\">";
@@ -951,7 +951,7 @@ function handle_getPersonalGeneDetailRequest(){
 			}
 			structureDetails2 = structureDetails2 + "<\/div>";
 			document.getElementById("personalGeneDetail-geneStruct").innerHTML = structureDetails1 + structureDetails2;
-			
+
 			var variantDetails1 = "", variantDetails2 = "";
 			if(variants.length > 0){
 				$("#personalGeneDetailVariantTrnode").css("display","table-row");
@@ -966,7 +966,7 @@ function handle_getPersonalGeneDetailRequest(){
 			}else{
 				$("#personalGeneDetailVariantTrnode").css("display","none");
 			}
-			
+
 			var statusDetails1 = "", statusDetails2 = "";
 			if(statuses.length > 0){
 				$("#personalGeneDetailStatusTrnode").css("display","table-row");
@@ -981,7 +981,7 @@ function handle_getPersonalGeneDetailRequest(){
 			}else{
 				$("#personalGeneDetailStatusTrnode").css("display","none");
 			}
-			
+
 			$(document.getElementById("personalGeneDetailLoading")).css("display","none");
 			$(document.getElementById("personalGeneDetailInfor")).css("display","block");
 		}
@@ -1086,7 +1086,7 @@ function canvasClickForVariant(evt){
 	var trNode = eventTarget.parentNode.parentNode;
 	var trackId = trNode.id, trackSuperId;
 	var i, j,k;
-	
+
 	evtCanvasX = evtMouseCoods.x - $(eventTarget).position().left;
 	evtCanvasY = evtMouseCoods.y - $(eventTarget).position().top;
 
@@ -1096,7 +1096,7 @@ function canvasClickForVariant(evt){
 			break;
 		}
 	}
-	
+
 	if(i < trackItems.length) {
 		for( j = 0; j < trackItems[i].details.length; j++) {
 			if(evtCanvasX >= trackItems[i].details[j].left && evtCanvasX <= trackItems[i].details[j].right && evtCanvasY >= trackItems[i].details[j].top && evtCanvasY <= trackItems[i].details[j].bottom) {
@@ -1106,7 +1106,7 @@ function canvasClickForVariant(evt){
 		}
 		if(j < trackItems[i].details.length) {
 			//alert(""+trackId + trackItems[i].details[j].id + trackItems[i].details[j].from + trackItems[i].details[j].to);
-			
+
 			//draw the pointer
 	//		drawDecoriteminfopointer("variantDetailTooltipPointer");
 			//set the position & display
@@ -1122,14 +1122,14 @@ function canvasClickForVariant(evt){
 				document.body.style.cursor = "auto";
 			});
 			$(document).bind("mousedown", mousedownOutsideVariantTooltip);
-						
+
 			//Ajax to get the gene details
 			var requestId = trackId;
 			if (trackId!=trackSuperId){
 				requestId+="@"+trackSuperId;
 			}
 			getVariantDetailHttpRequest(requestId, trackItems[i].details[j].id, trackItems[i].details[j].from, trackItems[i].details[j].to);
-			
+
 		}
 	}
 }
@@ -1354,7 +1354,7 @@ function canvasClickForRead(evt){
 	var trNode = eventTarget.parentNode.parentNode;
 	var trackId = trNode.id, trackSuperId;
 	var i, j,k;
-	
+
 	evtCanvasX = evtMouseCoods.x - $(eventTarget).position().left;
 	evtCanvasY = evtMouseCoods.y - $(eventTarget).position().top;
 
@@ -1364,7 +1364,7 @@ function canvasClickForRead(evt){
 			break;
 		}
 	}
-	
+
 	if(i < trackItems.length) {
 		for( j = 0; j < trackItems[i].details.length; j++) {
 			if(evtCanvasX >= trackItems[i].details[j].left && evtCanvasX <= trackItems[i].details[j].right && evtCanvasY >= trackItems[i].details[j].top && evtCanvasY <= trackItems[i].details[j].bottom) {
@@ -1388,10 +1388,10 @@ function canvasClickForRead(evt){
 				document.body.style.cursor = "auto";
 			});
 			$(document).bind("mousedown", mousedownOutsideReadTooltip);
-						
+
 			//Ajax to get the gene details
 			getReadDetailHttpRequest(trackSuperId, trackItems[i].details[j].id, trackItems[i].details[j].from, trackItems[i].details[j].to);
-			
+
 		}
 	}
 }
@@ -1413,14 +1413,14 @@ function handle_getReadDetailHttpRequest(){
 			$("#readDetailContentTable").html("");
 			$("#readDetailContentTable").append("<tr><td style=\"color:white;font:italic bold 12px Georgia;\" colspan=\"2\">" + readId + "<\/td><\/tr>");
 			$("#readDetailContentTable").append("<tr style=\"color:white;font-size: 12px\"><td valign=\"top\">Scale:<\/td><td valign=\"top\">" + readScale + "<\/td><\/tr>");
-			
+
 			var i;
 			for(i = 0; i < readNode.childNodes.length; i++){
 				if(readNode.childNodes[i].nodeName != xmlTagFrom && readNode.childNodes[i].nodeName != xmlTagTo){
 					$("#readDetailContentTable").append("<tr style=\"color:white;font-size: 12px;\"><td valign=\"top\">" + readNode.childNodes[i].nodeName + ":" + "<\/td><td valign=\"top\" style=\"width: 300px; word-break: break-all;\">" + readNode.childNodes[i].childNodes[0].nodeValue + "<\/td><\/tr>");
 				}
 			}
-			
+
 			$("#readDetailLoading").css("display","none");
 			$("#readDetailContent").css("display","block");
 		}
@@ -1493,7 +1493,7 @@ function canvasMousemoveOnPP(evt) {
 			}
 		}
 	}
-	
+
 	if(i < trackItems.length) {
 		if(j >= trackItems[i].details.length) {
 			$(eventTarget).css("cursor", "url(./image/Grabber.cur),auto");
@@ -1521,7 +1521,7 @@ function canvasClickForVariantOnPP(evt){
 	var trNode = eventTarget.parentNode.parentNode.parentNode;
 	var trackId = trNode.id, trackSuperId;
 	var i, j, k;
-	
+
 	if(personalPinned){
 		evtCanvasX = evtMouseCoods.x - $(eventTarget).position().left;
 		evtCanvasY = evtMouseCoods.y - $(eventTarget).position().top;
@@ -1536,11 +1536,11 @@ function canvasClickForVariantOnPP(evt){
 			break;
 		}
 	}
-	
+
 	if(trackSuperId + "." == "undefined."){
 		trackSuperId = initPvar_superid;
 	}
-	
+
 	if(i < trackItems.length || trackId == personalPannel.Pvar.id) {
 		if(i < trackItems.length){
 			for( j = 0; j < trackItems[i].details.length; j++) {
@@ -1561,7 +1561,7 @@ function canvasClickForVariantOnPP(evt){
 				}
 			}
 		}
-		
+
 		if((i < trackItems.length && j < trackItems[i].details.length )|| (personalPannel.Pvar.details.length && j < personalPannel.Pvar.details.length)) {
 			//draw the pointer
 		//	drawDecoriteminfopointer("variantDetailTooltipPointerOnPP");
@@ -1571,7 +1571,7 @@ function canvasClickForVariantOnPP(evt){
 		//	var orginal_position_x = evtCanvasX + $(eventTarget).position().left - 15;
 		//	if(orginal_position_y+$("#personalPannel").position().top + 380 > document.body.clientHeight+document.body.scrollTop){
 		//		orginal_position_y = document.body.clientHeight+document.body.scrollTop-$("#personalPannel").position().top - 380
-		//	} 
+		//	}
 		//	if(orginal_position_x+$("#personalPannel").position().left + 320 > document.body.clientWidth+document.body.scrollLeft){
 		//		orginal_position_x = document.body.clientWidth+document.body.scrollLeft-$("#personalPannel").position().left - 320
 		//	}
@@ -1590,7 +1590,7 @@ function canvasClickForVariantOnPP(evt){
 				document.body.style.cursor = "auto";
 			});
 			$(document).bind("mousedown", mousedownOutsideVariantTooltipOnPP);
-			
+
 			//Ajax to get the gene details
 			if(/^_/.test(trackSuperId)){
 				trackSuperId = trackSuperId.substring(1);
@@ -1699,7 +1699,7 @@ function handle_getVariantDetailHttpRequestOnPP(){
 			}
 
 			$("#variantDetailContent_INFO_ContentOnPP").html(infohtml);
-				
+
 			$("#variantDetailLoadingOnPP").css("display","none");
 			$("#variantDetailContentOnPP").css("display","block");
 		}
@@ -1738,7 +1738,7 @@ function canvasClickForRepeat(evt) {
 	}
 	//add by Liran for Pfanno and Pclns track details
 	var i, j,k;
-	
+
 	for( i = 0; i < trackItems.length; i++) {
 		if(trackItems[i].id == trackId) {
 			break;
@@ -1793,7 +1793,7 @@ function canvasClickForRepeat(evt) {
 				document.body.style.cursor = "auto";
 			});
 			document.body.addEventListener("mousedown", mousedownOutsideRepeatTooltip, false);
-						
+
 			//Ajax to get the gene details
 			getRepeatDetailHttpRequest(trackId, trackItems[i].details[j].id, trackItems[i].details[j].from, trackItems[i].details[j].to);
 		}
@@ -1823,7 +1823,7 @@ function canvasClickForRepeat(evt) {
 				document.body.style.cursor = "auto";
 			});
 			document.body.addEventListener("mousedown", mousedownOutsideRepeatTooltip, false);
-						
+
 			//Ajax to get the gene details
 			getRepeatDetailHttpRequest(trackId, personalPannel.Pfanno.details[j].id, personalPannel.Pfanno.details[j].from, personalPannel.Pfanno.details[j].to);
 		}
@@ -1852,7 +1852,7 @@ function canvasClickForRepeat(evt) {
 				document.body.style.cursor = "auto";
 			});
 			document.body.addEventListener("mousedown", mousedownOutsideRepeatTooltip, false);
-						
+
 			//Ajax to get the gene details
 			getRepeatDetailHttpRequest(trackId, personalPannel.Pclns[Pfanno_Pclns_Node].details[j].id, personalPannel.Pclns[Pfanno_Pclns_Node].details[j].from, personalPannel.Pclns[Pfanno_Pclns_Node].details[j].to);
 		}
@@ -1876,7 +1876,7 @@ function handle_getRepeatDetailHttpRequest(){
 			var repeatId = repeatNode.getAttribute(xmlAttributeId);
 			var repeatFrom = repeatNode.getElementsByTagName(xmlTagFrom)[0].childNodes[0].nodeValue;
 			var repeatTo = repeatNode.getElementsByTagName(xmlTagTo)[0].childNodes[0].nodeValue;
-			
+
 			$("#repeatMaskDetailContent_id").html(repeatId);
 			$("#repeatMaskDetailContent_scale").html(chrNum + ":" + repeatFrom + "-" + repeatTo);
 			if(repeatNode.getElementsByTagName(xmlTagDirection).length > 0){
@@ -1915,7 +1915,7 @@ function handle_getRepeatDetailHttpRequest(){
 			}else{
 					$("#repeatMaskDetailContent_link").css("display","none");
 			}
-			
+
 			$("#repeatMaskDetailLoading").css("display","none");
 			$("#repeatMaskDetailContent").css("display","block");
 		}
@@ -2129,7 +2129,7 @@ function historyback(){
 	searchLength_user = Math.round(searchLength / 3);
 	start_user = startIndex + searchLength_user;
 	end_user = endIndex - searchLength_user;
-		
+
 	if(start_user < 1) {
 		start_user = 1;
 	}
@@ -2178,7 +2178,7 @@ function historyforward(){
 	searchLength_user = Math.round(searchLength / 3);
 	start_user = startIndex + searchLength_user;
 	end_user = endIndex - searchLength_user;
-		
+
 	if(start_user < 1) {
 		start_user = 1;
 	}
@@ -2256,10 +2256,10 @@ function jump() {
 		startIndex = start_user - searchLength_user;
 		endIndex = end_user + searchLength_user;
 		searchLength = searchLength_user * 3;
-		
+
 		setSliderMax();
 		setSliderValue(searchLength_user);
-		
+
 		searchInputNode.value = "" + chrNum + ":" + addCommas(start_user) + "-" + addCommas(end_user);
 		showuserSearchIndex(start_user, end_user);
 
@@ -2279,7 +2279,7 @@ function showRefForHistory(){
 	url = url + endIndex;
 	url = url + "&width=";
 	url = url + trackLength;
-	
+
 	window.localStorage.clear();
 
 	updateRequest(url);
@@ -2297,7 +2297,7 @@ function showRef() {
 	url = url + endIndex;
 	url = url + "&width=";
 	url = url + trackLength;
-	
+
 	var tempHref = "browser.html?Chr=";
 	tempHref = tempHref + chrNum;
 	tempHref = tempHref + "&Start=";
@@ -2338,7 +2338,7 @@ var XMLHttpReq7 = createXMLHttpRequest();//for browse jump
 var XMLHttpReq8 = createXMLHttpRequest();//for BJW_upStat
 var XMLHttpReq10 = createXMLHttpRequest();//for BJW_scan
 var XMLHttpReq11 = createXMLHttpRequest();//for addExIndividual
-var XMLHttpReq12 = createXMLHttpRequest();//for getCheck 
+var XMLHttpReq12 = createXMLHttpRequest();//for getCheck
 var XMLHttpReq13 = createXMLHttpRequest();//for getScoreMethod
 var showType;
 
@@ -2347,7 +2347,7 @@ function updateRequest(url) {
 		hideLoadingImage(loadingId);
 	}
 	loadingId = showLoadingImage("tableTrack", "body");
-	
+
 	if(document.getElementById(ppLoadingId)){
 		hideLoadingImage(ppLoadingId);
 	}
@@ -2401,13 +2401,13 @@ function handleUpdateStateChange() {
 					endIndex = end_user + searchLength_user;
 					searchLength = searchLength_user * 3;
 				}
-				
+
 				setSliderValue(searchLength_user);
-				
+
 				drawScaleboxOnCytobandsImg(searchLength_user, start_user);
-				
+
 				showuserSearchIndex(start_user, end_user);
-				
+
 				tracksImgareaselect.setOptions({
 					disable : true
 				});
@@ -2595,7 +2595,7 @@ function handleUpdateStateChange() {
 				}
 
 				hideLoadingImage(loadingId);
-				
+
 				if(personalPannel.Pvar.id){
 					var element_nodes = XMLDoc.getElementsByTagName(xmlTagElements);
 					var canvasNodes;
@@ -2670,7 +2670,7 @@ function handleUpdateStateChange() {
 //					$("#personalPannel").animate({top:ppTop});
 					$("#ppTrackTable tbody").sortable({axis:"y" ,cancel:".cannotSortable"});
 				}
-				
+
 				if(document.getElementById(ppLoadingId)) {
 					hideLoadingImage(ppLoadingId);
 				}
@@ -2682,7 +2682,7 @@ function handleUpdateStateChange() {
 			}
 		}
 	}
-	$( ".canvasTrackcontent" ).draggable({ 
+	$( ".canvasTrackcontent" ).draggable({
 		axis: "x" ,
 		cursor: "url(./image/Grabber.cur),auto" ,
 		drag : function(event, ui) {
@@ -2975,7 +2975,7 @@ function drawRefAxis() {//规定最小显示粒度为10个pixel
 
 		var widthOfAxis = trackLength;
 		var yOfAxis = 25;
-		
+
 		var axis_start_in_canvas = (startIndex_axis - startIndex) / searchLength * trackLength;
 		var axis_end_in_canvas = (endIndex_axis - startIndex + 1) / searchLength * trackLength;
 		var axis_width_in_canvas = axis_end_in_canvas - axis_start_in_canvas + 1;
@@ -2986,7 +2986,7 @@ function drawRefAxis() {//规定最小显示粒度为10个pixel
 		var i = 0;
 		var indexOfAxis = startIndex + bpNumFromStartToFirst;
 		var index_str = "";
-		while(temp_x< widthOfAxis){	
+		while(temp_x< widthOfAxis){
 			if(temp_x >= axis_start_in_canvas && temp_x <= axis_end_in_canvas) {
 				if(indexOfAxis % (10 * bpNumResult) == 0) {
 					ctx.beginPath();
@@ -3071,18 +3071,18 @@ function showRead(canvas1, canvas2, readNode, mode, isShowId) {
 
 	var i, j, k, y;
 	var trackItemIndex;
-	
+
 	for( i = 0; i < trackItems.length; i++) {
 		if(readNodeName == trackItems[i].id) {
 			trackItemIndex = i;
 			break;
 		}
 	}
-	
+
 	if(trackItemIndex< trackItems.length){
 		trackItems[trackItemIndex].details = [];
 	}
-	
+
 	for( i = 0; i < readNodes.length; i++) {
 		readFroms[i] = (readNodes[i].firstChild.childNodes[0].nodeValue).split(',');
 		readTos[i] = (readNodes[i].childNodes[1].childNodes[0].nodeValue).split(',');
@@ -3096,7 +3096,7 @@ function showRead(canvas1, canvas2, readNode, mode, isShowId) {
 			readRelativeFroms[i][j] = parseInt((parseInt(readFroms[i][j]) - startIndex) / searchLength * trackLength);
 			readRelativeTos[i][j] = parseInt((parseInt(readTos[i][j]) - startIndex + 1) / searchLength * trackLength);
 		}
-		
+
 		if(trackItemIndex< trackItems.length){
 			trackItems[trackItemIndex].details[i] = [];
 			trackItems[trackItemIndex].details[i].id = readIds[i];
@@ -3252,7 +3252,7 @@ function showRead(canvas1, canvas2, readNode, mode, isShowId) {
 							ctx1.fillStyle = "#000";
 							ctx1.strokeStyle = "#000";
 							ctx1.fillText(readNodeName, canvas1.width - ctx1.measureText(readNodeName).width, 8);
-							
+
 							y = 10;
 							for( i = 0; i < packReads.length; i++) {
 								for( j = 0; j < packReads[i].length; j++) {
@@ -3262,11 +3262,11 @@ function showRead(canvas1, canvas2, readNode, mode, isShowId) {
 										trackItems[trackItemIndex].details[packReads[i][j]].top = y - 10;
 										trackItems[trackItemIndex].details[packReads[i][j]].bottom = y;
 									}
-									
+
 									ctx2.fillStyle = "#000";
 									ctx2.strokeStyle = "#000";
 									ctx2.fillText(readIds[packReads[i][j]], readRelativeFroms[packReads[i][j]][0] - ctx2.measureText(readIds[packReads[i][j]]).width - 3, y-2);
-									
+
 									if(readDireactions[packReads[i][j]] == "+") {
 										if(parseInt(readMapqs[packReads[i][j]]) == 0) {
 											ctx2.strokeStyle = "#6ff9f";
@@ -3380,7 +3380,7 @@ function showRead(canvas1, canvas2, readNode, mode, isShowId) {
 							ctx1.fillStyle = "#000";
 							ctx1.strokeStyle = "#000";
 							ctx1.fillText(readNodeName, canvas1.width - ctx1.measureText(readNodeName).width, 8);
-							
+
 							y = 10;
 							for( i = 0; i < packReads.length; i++) {
 								for( j = 0; j < packReads[i].length; j++) {
@@ -3388,7 +3388,7 @@ function showRead(canvas1, canvas2, readNode, mode, isShowId) {
 										trackItems[trackItemIndex].details[packReads[i][j]].top = y - 10;
 										trackItems[trackItemIndex].details[packReads[i][j]].bottom = y;
 									}
-									
+
 									if(readDireactions[packReads[i][j]] == "+") {
 										if(parseInt(readMapqs[packReads[i][j]]) == 0) {
 											ctx2.strokeStyle = "#6ff9f";
@@ -3497,17 +3497,17 @@ function showRead(canvas1, canvas2, readNode, mode, isShowId) {
 							squishReads[j][0] = i;
 						}
 					}
-					
+
 					if(squishReads.length <= 300){
 						canvas1.height = 5 * squishReads.length + 3*(squishReads.length - 1);
 						canvas1.style.height = 5 * squishReads.length + 3*(squishReads.length - 1);
 						canvas2.height = 5 * squishReads.length + 3*(squishReads.length - 1);
 						canvas2.style.height = 5 * squishReads.length + 3*(squishReads.length - 1);
-						
+
 						ctx1.fillStyle = "#000";
 						ctx1.strokeStyle = "#000";
 						ctx1.fillText(readNodeName, canvas1.width - ctx1.measureText(readNodeName).width, 8);
-	
+
 						y = 0;
 						for( i = 0; i < squishReads.length; i++) {
 							for( j = 0; j < squishReads[i].length; j++) {
@@ -3583,11 +3583,11 @@ function showRead(canvas1, canvas2, readNode, mode, isShowId) {
 						canvas2.height = 10;
 						canvas1.style.height = 10;
 						canvas2.style.height = 10;
-		
+
 						ctx1.strokeStyle = "#000";
 						ctx1.fillStyle = "#000";
 						ctx1.fillText(readNodeName, canvas1.width - ctx1.measureText(readNodeName).width, 8);
-		
+
 						for( i = 0; i < readNodes.length; i++) {
 							if(readDireactions[i] == "+") {
 								if(parseInt(readMapqs[i]) == 0) {
@@ -3669,7 +3669,7 @@ function showPositiveValue(canvas1, canvas2, valueNode, mode, direaction, canvas
 	var valueTo = valueNode.getElementsByTagName(xmlTagTo)[0].childNodes[0].nodeValue;
 	var valueStep = parseInt(valueNode.getElementsByTagName(xmlTagStep)[0].childNodes[0].nodeValue);
 	var valueList = getNodeText(valueNode.getElementsByTagName(xmlTagValueList)[0]).split(";");
-	
+
 	//var valueDescription = valueNode.getElementsByTagName(xmlTagDescription)[0].childNodes[0].nodeValue;
 	var valueMax = parseFloat(valueList[0]), valueMin = parseFloat(valueList[0]);
 	var valueMax_axisIndex = 0;
@@ -3688,7 +3688,7 @@ function showPositiveValue(canvas1, canvas2, valueNode, mode, direaction, canvas
 		}
 		return;
 	}
-	
+
 	var startIndex_axis, endIndex_axis, trackLength_axis, searchLength_axis;
 	var offsetWidth;
 	if(startIndex<1){
@@ -3704,8 +3704,8 @@ function showPositiveValue(canvas1, canvas2, valueNode, mode, direaction, canvas
 	searchLength_axis = endIndex_axis - startIndex_axis + 1;
 	trackLength_axis = Math.round((endIndex_axis - startIndex_axis + 1) / searchLength * trackLength);
 	offsetWidth = (startIndex_axis - startIndex) / searchLength * trackLength;
-	
-	
+
+
 	for( i = 0; i < valueList.length; i++) {
 		if(parseFloat(valueList[i]) > valueMax) {
 			valueMax = parseFloat(valueList[i]);
@@ -3731,13 +3731,13 @@ function showPositiveValue(canvas1, canvas2, valueNode, mode, direaction, canvas
 	if(canvas1.getContext && canvas2.getContext) {
 		var ctx1 = canvas1.getContext('2d');
 		var ctx2 = canvas2.getContext('2d');
-		
+
 		if(valueMax > 0) {
 			canvas1.height = canvasHeight;
 			canvas2.height = canvasHeight;
 			canvas1.style.height = canvasHeight;
 			canvas2.style.height = canvasHeight;
-			
+
 			ctx1.strokeStyle = "#000";
 			ctx1.fillStyle = "#000";
 			if(canvasHeight >= 30) {
@@ -3778,7 +3778,7 @@ function showPositiveValue(canvas1, canvas2, valueNode, mode, direaction, canvas
 			ctx1.fillStyle = "#000";
 			ctx1.fillText(valueId, canvas1.width - ctx1.measureText(valueId).width, 8);
 		}
-		
+
 	}
 }
 
@@ -3827,7 +3827,7 @@ function showValue(canvas1, canvas2, valueNode, mode, direction, canvasHeight, l
 		}
 		return;
 	}
-	
+
 	var startIndex_axis, endIndex_axis, trackLength_axis, searchLength_axis;
 	var offsetWidth;
 	if(startIndex<1){
@@ -3843,11 +3843,11 @@ function showValue(canvas1, canvas2, valueNode, mode, direction, canvasHeight, l
 	searchLength_axis = endIndex_axis - startIndex_axis + 1;
 	trackLength_axis = Math.round((endIndex_axis - startIndex_axis + 1) / searchLength * trackLength);
 	offsetWidth = (startIndex_axis - startIndex) / searchLength * trackLength;
-	
+
 	if(valueList.length < trackLength_axis / 2) {
 		valueStep = trackLength_axis / valueList.length;
 	}
-	
+
 	for( i = 0; i < valueList.length; i++) {
 		if(parseFloat(valueList[i]) > valueMax) {
 			valueMax = parseFloat(valueList[i]);
@@ -3890,12 +3890,12 @@ function showValue(canvas1, canvas2, valueNode, mode, direction, canvasHeight, l
 				canvas2.style.height = canvasHeight;
 
 				ctx1.strokeStyle = "#000";
-				ctx1.fillStyle = "#000";		
+				ctx1.fillStyle = "#000";
 				ctx1.fillText(valueId, canvas1.width - ctx1.measureText(valueId).width, 8);
-				
+
 				ctx2.fillStyle = colorStyle;
 				ctx2.strokeStyle = colorStyle;
-				
+
 				if(direction == "topdown") {
 					for( i = 0; i < valueList.length; i++) {
 						ctx2.fillRect(Math.round(i * valueStep) + offsetWidth, 0, Math.round((i+1)*valueStep) - Math.round(i * valueStep), parseFloat(valueList[i]));
@@ -3923,7 +3923,7 @@ function showValue(canvas1, canvas2, valueNode, mode, direction, canvasHeight, l
 		for( i = 0; i < valueList.length; i++) {
 			valueList[i] = Math.round(valueList[i] * canvasHeight / valueScale);
 		}
-		
+
 		if(canvas1.getContext && canvas2.getContext) {
 			var ctx1 = canvas1.getContext('2d');
 			var ctx2 = canvas2.getContext('2d');
@@ -3932,17 +3932,17 @@ function showValue(canvas1, canvas2, valueNode, mode, direction, canvasHeight, l
 			canvas2.height = canvasHeight;
 			canvas1.style.height = canvasHeight;
 			canvas2.style.height = canvasHeight;
-			
+
 			ctx1.strokeStyle = "#000";
-			ctx1.fillStyle = "#000";		
+			ctx1.fillStyle = "#000";
 			ctx1.fillText(valueId, canvas1.width - ctx1.measureText(valueId).width, 8);
-			
+
 			ctx2.fillStyle = "#8B5A2B";
 			ctx2.fillRect(0, valueMax + 1, trackLength, 1);
 
 			ctx2.fillStyle = colorStyle;
 			ctx2.strokeStyle = colorStyle;
-			
+
 			for( i = 0; i < valueList.length; i++) {
 				if(valueList[i] > 0) {
 					ctx2.fillRect(Math.round(i * valueStep) + offsetWidth, valueMax + 1 - parseFloat(valueList[i]), Math.round((i+1)*valueStep) - Math.round(i * valueStep), parseFloat(valueList[i]));
@@ -3962,11 +3962,11 @@ function showValue(canvas1, canvas2, valueNode, mode, direction, canvasHeight, l
 			canvas2.height = canvasHeight;
 			canvas1.style.height = canvasHeight;
 			canvas2.style.height = canvasHeight;
-			
+
 			ctx1.strokeStyle = "#000";
-			ctx1.fillStyle = "#000";		
+			ctx1.fillStyle = "#000";
 			ctx1.fillText(valueId, canvas1.width - ctx1.measureText(valueId).width, 8);
-				
+
 			ctx2.fillStyle = colorStyle;
 			ctx2.strokeStyle = colorStyle;
 			if(direction == "topdown") {
@@ -3999,7 +3999,7 @@ function showValuesByHeatmap(canvas1, canvas2, valueNode, heatmapHeight, logRati
 
 	var H_P = 0, H_N = 120;
 	var hh, ss, ll;
-	
+
 	var startIndex_axis, endIndex_axis, trackLength_axis, searchLength_axis;
 	var offsetWidth;
 	if(startIndex<1){
@@ -4033,7 +4033,7 @@ function showValuesByHeatmap(canvas1, canvas2, valueNode, heatmapHeight, logRati
 	}
 	valueMaxAbs = Math.abs(valueMax) > Math.abs(valueMin) ? Math.abs(valueMax) : Math.abs(valueMin);
 	Lvalue_per_maxValue = Lvalue_of_HSL_inheatmap / valueMaxAbs;
-	
+
 	if(logRatioValue && (valueMinAbs > 1)){
 		Lvalue_per_maxValue = Lvalue_of_HSL_inheatmap / (Math.round(Math.log(valueMaxAbs) / Math.log(logRatioValue)));
 		for( i = 0; i < valueList.length; i++) {
@@ -4147,14 +4147,14 @@ function showVariantByImg(canvas1, canvas2, variantNode, mode) {
 		var variantsSuperId = variantNode.getAttribute("superid") || variantName;
 		insertSettingBtn(variantName, ifParam, variantsSuperId);
 	}
-	
+
 	for( i = 0; i < trackItems.length; i++) {
 		if(variantName == trackItems[i].id) {
 			trackItemIndex = i;
 			break;
 		}
 	}
-	
+
 	if(trackItemIndex< trackItems.length){
 		trackItems[trackItemIndex].details = [];
 	}else{
@@ -4197,7 +4197,7 @@ function showVariantByImg(canvas1, canvas2, variantNode, mode) {
 		relativeFroms[i] = parseInt((parseInt(fromNodes[i].childNodes[0].nodeValue) - startIndex) / searchLength * trackLength);
 		relativeTos[i] = parseInt((parseInt(toNodes[i].childNodes[0].nodeValue) - startIndex + 1) / searchLength * trackLength);
 		imgFroms[i] = (relativeFroms[i] + relativeTos[i] - imgWidth) / 2;
-		
+
 		/*if(trackItemIndex< trackItems.length){
 			trackItems[trackItemIndex].details[i] = [];
 			trackItems[trackItemIndex].details[i].id = variantIds[i];
@@ -4208,7 +4208,7 @@ function showVariantByImg(canvas1, canvas2, variantNode, mode) {
 				trackItems[trackItemIndex].details[i].right = imgFroms[i] + imgWidth;
 			}
 		}*/
-		
+
 		if(mode != "dense" && mode != "squish") {
 			if(relativeTos[i] - relativeFroms[i] + 1 < imgWidth) {
 				relativeFroms[i] = imgFroms[i];
@@ -4266,7 +4266,7 @@ function showVariantByImg(canvas1, canvas2, variantNode, mode) {
 					case variantType_INSERTION:
 						ctx2.drawImage(imgINS, imgFroms[i], y);
 						break;
-					case variantType_SNV:						
+					case variantType_SNV:
 						switch(variantNodes[i].getElementsByTagName(xmlTagLetter)[0].childNodes[0].nodeValue) {
 							case "A":
 								imgSNV = imgSNV_A;
@@ -4322,7 +4322,7 @@ function showVariantByImg(canvas1, canvas2, variantNode, mode) {
 					canvas1.style.height = imgHeight * packVariants.length + 3*(packVariants.length - 1) > 10 ? imgHeight * packVariants.length + 3*(packVariants.length - 1) : 10;
 					canvas2.height = imgHeight * packVariants.length + 3*(packVariants.length - 1) > 10 ? imgHeight * packVariants.length + 3*(packVariants.length - 1) : 10;
 					canvas2.style.height = imgHeight * packVariants.length + 3*(packVariants.length - 1) > 10 ? imgHeight * packVariants.length + 3*(packVariants.length - 1) : 10;
-					
+
 					ctx1.fillStyle = "#000";
 					ctx1.fillText(variantName_show, canvas1.width - ctx1.measureText(variantName_show).width, 8);
 
@@ -4334,10 +4334,10 @@ function showVariantByImg(canvas1, canvas2, variantNode, mode) {
 								trackItems[trackItemIndex].details[packVariants[i][j]].id = variantIds[packVariants[i][j]];
 								trackItems[trackItemIndex].details[packVariants[i][j]].from = parseInt(fromNodes[packVariants[i][j]].childNodes[0].nodeValue);
 								trackItems[trackItemIndex].details[packVariants[i][j]].to = parseInt(toNodes[packVariants[i][j]].childNodes[0].nodeValue);
-								
+
 								trackItems[trackItemIndex].details[packVariants[i][j]].left = imgFroms[packVariants[i][j]];
 								trackItems[trackItemIndex].details[packVariants[i][j]].right = imgFroms[packVariants[i][j]] + imgWidth;
-								
+
 								trackItems[trackItemIndex].details[packVariants[i][j]].top = y;
 								trackItems[trackItemIndex].details[packVariants[i][j]].bottom = y + imgHeight;
 							}else{
@@ -4346,10 +4346,10 @@ function showVariantByImg(canvas1, canvas2, variantNode, mode) {
 									personalPannel.Pvar.details[packVariants[i][j]].id = variantIds[packVariants[i][j]];
 									personalPannel.Pvar.details[packVariants[i][j]].from = parseInt(fromNodes[packVariants[i][j]].childNodes[0].nodeValue);
 									personalPannel.Pvar.details[packVariants[i][j]].to = parseInt(toNodes[packVariants[i][j]].childNodes[0].nodeValue);
-									
+
 									personalPannel.Pvar.details[packVariants[i][j]].left = imgFroms[packVariants[i][j]];
 									personalPannel.Pvar.details[packVariants[i][j]].right = imgFroms[packVariants[i][j]] + imgWidth;
-									
+
 									personalPannel.Pvar.details[packVariants[i][j]].top = y;
 									personalPannel.Pvar.details[packVariants[i][j]].bottom = y + imgHeight;
 								}
@@ -4391,7 +4391,7 @@ function showVariantByImg(canvas1, canvas2, variantNode, mode) {
 							} else {
 								ctx2.drawImage(variantEffect>2 ? imgOTHe : imgOTH, imgFroms[packVariants[i][j]], y);
 							}
-							
+
 							ctx2.fillText(variantIds[packVariants[i][j]], imgFroms[packVariants[i][j]] - ctx2.measureText(variantIds[packVariants[i][j]]).width, y + imgHeight - 2);
 							/////added by Liran for effect block
 							var vee = 0;
@@ -4444,7 +4444,7 @@ function showVariantByImg(canvas1, canvas2, variantNode, mode) {
 				canvas1.style.height = 5 * squishVariants.length + 3*(squishVariants.length - 1);
 				canvas2.height = 5 * squishVariants.length + 3*(squishVariants.length - 1);
 				canvas2.style.height = 5 * squishVariants.length + 3*(squishVariants.length - 1);
-				
+
 				ctx1.fillStyle = "#000";
 				ctx1.fillText(variantName_show, canvas1.width - ctx1.measureText(variantName_show).width, 8);
 
@@ -4497,14 +4497,14 @@ function showVariant(canvas1, canvas2, variantNode, mode) {
 	var relativeWidth;
 	var i, j, y;
 	var trackItemIndex;
-	
+
 	for( i = 0; i < trackItems.length; i++) {
 		if(variantName == trackItems[i].id) {
 			trackItemIndex = i;
 			break;
 		}
 	}
-	
+
 	if(trackItemIndex< trackItems.length){
 		trackItems[trackItemIndex].details = [];
 	}
@@ -4525,7 +4525,7 @@ function showVariant(canvas1, canvas2, variantNode, mode) {
 			trackItems[trackItemIndex].details[i].to = parseInt(toNodes[i].childNodes[0].nodeValue);
 		}
 	}
-	
+
 	if(canvas1.getContext && canvas2.getContext) {
 		var ctx1 = canvas1.getContext('2d');
 		var ctx2 = canvas2.getContext('2d');
@@ -4574,7 +4574,7 @@ function showVariant(canvas1, canvas2, variantNode, mode) {
 					canvas1.style.height = 10 * packVariants.length + 3*(packVariants.length - 1) > 10 ? 10 * packVariants.length + 3*(packVariants.length - 1) : 10;
 					canvas2.height = 10 * packVariants.length + 3*(packVariants.length - 1) > 10 ? 10 * packVariants.length + 3*(packVariants.length - 1) : 10;
 					canvas2.style.height = 10 * packVariants.length + 3*(packVariants.length - 1) > 10 ? 10 * packVariants.length + 3*(packVariants.length - 1) : 10;
-					
+
 					ctx1.fillStyle = "#000";
 					ctx1.fillText(variantName, canvas1.width - ctx1.measureText(variantName).width, 8);
 
@@ -4631,10 +4631,10 @@ function showVariant(canvas1, canvas2, variantNode, mode) {
 				canvas1.style.height = 5 * squishVariants.length + 3*(squishVariants.length - 1);
 				canvas2.height = 5 * squishVariants.length + 3*(squishVariants.length - 1);
 				canvas2.style.height = 5 * squishVariants.length + 3*(squishVariants.length - 1);
-				
+
 				ctx1.fillStyle = "#000";
 				ctx1.fillText(variantName, canvas1.width - ctx1.measureText(variantName).width, 8);
-				
+
 				y = 0;
 				for( i = 0; i < squishVariants.length; i++) {
 					for( j = 0; j < squishVariants[i].length; j++) {
@@ -4699,7 +4699,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 	var subElements = [], subElementRelativeFroms = [], subElemnetRelativeTos = [], subElementTypes = [];
 	var variants = [], variantRelativeFroms = [], variantRelativeTos = [], variantTypes = [], variantIds = [], variantLetters = [];
 	var subElementWidth, elementRelativeWidth;
-	
+
 	var geneNodes2 = geneNode2.getElementsByTagName(xmlTagElement);
 	var elementFroms2 = [], elementTos2 = [], elementIds2 = [], elementDirections2 = [], elementColors2 = [];
 	var elementRelativeFroms2 = [], elementRelativeTos2 = [];
@@ -4709,11 +4709,11 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 	var subElementWidth, elementRelativeWidth;
 	var geneNodeName_show = geneNodeName;
 	var elementStatus = [], elementStatus2 = [];
-	
+
 	var i, j, k, m;
 	var extend_width = 10;
 	var img_height = 30, img_width = 21;
-	
+
 	var img_Letter_Array = [];
 	var imgDEL_AA, imgINS_AA, imgOTH_AA;
 	var imgStart, imgStart2, imgStop, imgStop2, imgASS, imgDSS, imgShift;
@@ -4781,7 +4781,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 		}
 		elementRelativeFroms[i] = parseInt((parseInt(elementFroms[i]) - startIndex) / searchLength * trackLength);
 		elementRelativeTos[i] = parseInt((parseInt(elementTos[i]) - startIndex + 1) / searchLength * trackLength);
-		
+
 		if(geneNodes[i].getElementsByTagName(xmlTagStatus).length > 0){
 			elementStatus[i] = true;
 		}else{
@@ -4842,7 +4842,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 			}
 		}
 	}
-	
+
 	for( i = 0; i < geneNodes2.length; i++) {
 		elementIds2[i] = geneNodes2[i].getAttribute(xmlAttributeId);
 		elementFroms2[i] = geneNodes2[i].getElementsByTagName(xmlTagFrom)[0].childNodes[0].nodeValue;
@@ -4855,7 +4855,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 		}
 		elementRelativeFroms2[i] = parseInt((parseInt(elementFroms2[i]) - startIndex) / searchLength * trackLength);
 		elementRelativeTos2[i] = parseInt((parseInt(elementTos2[i]) - startIndex + 1) / searchLength * trackLength);
-		
+
 		if(geneNodes2[i].getElementsByTagName(xmlTagStatus).length > 0){
 			elementStatus2[i] = true;
 		}else{
@@ -4916,11 +4916,11 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 			}
 		}
 	}
-	
+
 	if(((/^_/).test(geneNodeName))){
 		geneNodeName_show = (geneNodeName + "").replace("_","");
 	}
-	
+
 	personalPannel.Panno.details = [];
 
 	if(canvas1.getContext && canvas2.getContext) {
@@ -4934,7 +4934,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 			ctx1.strokeStyle = "#000";
 			ctx1.fillStyle = "#000";
 			ctx1.fillText(geneNodeName_show, canvas1.width - ctx1.measureText(geneNodeName_show).width, 8);
-			
+
 			return;
 		}
 		if(mode == "dense") {
@@ -4967,12 +4967,12 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 							}else{
 								ctx2.rect(subElementRelativeFroms[i][j] - extend_width, img_height, extend_width, 10);
 							}
-							
+
 							break;
 						case "sBand":
 							ctx2.rect(subElementRelativeFroms[i][j], 3 + img_height, subElementWidth, 5);
 							ctx2.fillRect(subElementRelativeFroms[i][j], 5 + img_height, subElementWidth, 1);
-							
+
 							break;
 						case "shBox":
 							var drawImage_eleWidth = subElementWidth;
@@ -4988,17 +4988,17 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 							}
 							//ctx2.drawImage(bkgImg_shift, 0, 0, subElementWidth, 10, subElementRelativeFroms[i][j], img_height, subElementWidth, 10);
 							ctx2.rect(subElementRelativeFroms[i][j], img_height, subElementWidth, 10);
-							
+
 							break;
 						case "lBox":
 							ctx2.rect(subElementRelativeFroms[i][j], img_height, subElementWidth, 10);
 							ctx2.fillRect(subElementRelativeFroms[i][j], 3 + img_height, subElementWidth, 5);
-							
+
 							break;
 						case "skBox":
 							ctx2.rect(subElementRelativeFroms[i][j], img_height, subElementWidth, 10);
 							ctx2.fillRect(subElementRelativeFroms[i][j], 5 + img_height, subElementWidth, 1);
-							
+
 							break;
 						case "psBox":
 							var drawImage_eleWidth = subElementWidth;
@@ -5022,8 +5022,8 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 							}else{
 								ctx2.rect(subElementRelativeFroms[i][j] - extend_width, 3 + img_height, extend_width, 5);
 							}
-							
-							
+
+
 							break;
 						case "seBox":
 							var drawImage_eleWidth = subElementWidth;
@@ -5044,7 +5044,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 							}else{
 								ctx2.rect(subElementRelativeFroms[i][j] - extend_width, img_height, extend_width, 10);
 							}
-							
+
 							break;
 						case "pseBox":
 							var drawImage_eleWidth = subElementWidth;
@@ -5065,7 +5065,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 							}else{
 								ctx2.rect(subElementRelativeFroms[i][j] - extend_width, img_height, extend_width, 10);
 							}
-							
+
 							break;
 					}
 					for( k = 0; k < variants[i][j].length; k++) {
@@ -5136,12 +5136,12 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 							}else{
 								ctx2.rect(subElementRelativeFroms2[i][j] + extend_width, img_height + 10 + 3 + img_height, extend_width, 10);
 							}
-							
+
 							break;
 						case "sBand":
 							ctx2.rect(subElementRelativeFroms2[i][j], 3 + img_height + 10 + 3 + img_height, subElementWidth2, 5);
 							ctx2.fillRect(subElementRelativeFroms2[i][j], 5 + img_height + 10 + 3 + img_height, subElementWidth2, 1);
-							
+
 							break;
 						case "shBox":
 							var drawImage_eleWidth = subElementWidth2;
@@ -5157,17 +5157,17 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 							}
 							//ctx2.drawImage(bkgImg_shift, 0, 0, subElementWidth2, 10, subElementRelativeFroms2[i][j], img_height + 10 + 3 + img_height, subElementWidth2, 10);
 							ctx2.rect(subElementRelativeFroms2[i][j], img_height + 10 + 3 + img_height, subElementWidth2, 10);
-							
+
 							break;
 						case "lBox":
 							ctx2.rect(subElementRelativeFroms2[i][j], img_height + 10 + 3 + img_height, subElementWidth2, 10);
 							ctx2.fillRect(subElementRelativeFroms2[i][j], 3 + img_height + 10 + 3 + img_height, subElementWidth2, 5);
-							
+
 							break;
 						case "skBox":
 							ctx2.rect(subElementRelativeFroms2[i][j], img_height + 10 + 3 + img_height, subElementWidth2, 10);
 							ctx2.fillRect(subElementRelativeFroms2[i][j], 5 + img_height + 10 + 3 + img_height, subElementWidth2, 1);
-							
+
 							break;
 						case "psBox":
 							var drawImage_eleWidth = subElementWidth2;
@@ -5191,7 +5191,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 							}else{
 								ctx2.rect(subElementRelativeFroms2[i][j] - extend_width, 3 + img_height + 10 + 3 + img_height, extend_width, 5);
 							}
-							
+
 							break;
 						case "seBox":
 							var drawImage_eleWidth = subElementWidth2;
@@ -5212,7 +5212,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 							}else{
 								ctx2.rect(subElementRelativeFroms2[i][j] - extend_width, img_height + 10 + 3 + img_height, extend_width, 10);
 							}
-							
+
 							break;
 						case "pseBox":
 							var drawImage_eleWidth = subElementWidth2;
@@ -5233,7 +5233,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 							}else{
 								ctx2.rect(subElementRelativeFroms2[i][j] - extend_width, img_height + 10 + 3 + img_height, extend_width, 10);
 							}
-							
+
 							break;
 					}
 					for( k = 0; k < variants2[i][j].length; k++) {
@@ -5282,7 +5282,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 					}
 				}
 			}
-			
+
 		} else {
 			var packVariants = [], squishVariants = [];
 			var packVariants2 = [], squishVariants2 = [];
@@ -5330,14 +5330,14 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 						packVariants2[j][0] = i;
 					}
 				}
-				
-				
+
+
 				if(packVariants.length + packVariants2.length<= 50) {
 					canvas1.height = (13 + img_height) * (packVariants.length + packVariants2.length) - 3;
 					canvas1.style.height = (13 + img_height) * (packVariants.length + packVariants2.length) - 3;
 					canvas2.height = (13 + img_height) * (packVariants.length + packVariants2.length) - 3;
 					canvas2.style.height = (13 + img_height) *(packVariants.length + packVariants2.length) - 3;
-					
+
 					ctx1.strokeStyle = "#000";
 					ctx1.fillStyle = "#000";
 					ctx1.fillText(geneNodeName_show, canvas1.width - ctx1.measureText(geneNodeName_show).width, 8);
@@ -5353,7 +5353,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 							personalPannel.Panno.details[packVariants[i][j]].right = elementRelativeTos[packVariants[i][j]];
 							personalPannel.Panno.details[packVariants[i][j]].top = y - 10;
 							personalPannel.Panno.details[packVariants[i][j]].bottom = y;
-							
+
 							if(elementIds[i] != ".") {
 								ctx2.fillStyle = elementColors[packVariants[i][j]];
 								ctx2.strokeStyle = elementColors[packVariants[i][j]];
@@ -5435,7 +5435,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 													ctx2.drawImage(imgStart, (variantRelativeFroms[packVariants[i][j]][k][m] + variantRelativeTos[packVariants[i][j]][k][m] - img_width) / 2, y - 10 - img_height);
 												}else{
 													ctx2.drawImage(imgStart2, (variantRelativeFroms[packVariants[i][j]][k][m] + variantRelativeTos[packVariants[i][j]][k][m] - img_width) / 2, y - 10 - img_height);
-												}	
+												}
 											} else if(geneVariantLetters[0] == "#") {
 												ctx2.drawImage(imgShift, (variantRelativeFroms[packVariants[i][j]][k][m] + variantRelativeTos[packVariants[i][j]][k][m] - img_width) / 2, y - 10 - img_height);
 											} else if(geneVariantLetters[0] == "(") {
@@ -5488,7 +5488,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 							personalPannel.Panno.details[personalPannel_Panno_details_length].right = elementRelativeTos2[packVariants2[i][j]];
 							personalPannel.Panno.details[personalPannel_Panno_details_length].top = y - 10;
 							personalPannel.Panno.details[personalPannel_Panno_details_length].bottom = y;
-							
+
 							if(elementIds2[i] != ".") {
 								ctx2.fillStyle = elementColors2[packVariants2[i][j]];
 								ctx2.strokeStyle = elementColors2[packVariants2[i][j]];
@@ -5645,7 +5645,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 						squishVariants2[j][0] = i;
 					}
 				}
-				
+
 				canvas1.height = 8 * (squishVariants.length + squishVariants2.length) - 3;
 				canvas1.style.height = 8 * (squishVariants.length + squishVariants2.length) - 3;
 				canvas2.height = 8 * (squishVariants.length + squishVariants2.length) - 3;
@@ -5653,7 +5653,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 				ctx1.strokeStyle = "#000";
 				ctx1.fillStyle = "#000";
 				ctx1.fillText(geneNodeName_show, canvas1.width - ctx1.measureText(geneNodeName_show).width, 8);
-				
+
 				y = 0;
 				for( i = 0; i < squishVariants.length; i++) {
 					for( j = 0; j < squishVariants[i].length; j++) {
@@ -5669,7 +5669,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 					}
 					y = y + 8;
 				}
-				
+
 				/****************************************************************************/
 				for( i = 0; i < squishVariants2.length; i++) {
 					for( j = 0; j < squishVariants2[i].length; j++) {
@@ -5687,7 +5687,7 @@ function showPersonalGeneByImg_TwoNode(canvas1, canvas2, geneNode, geneNode2, mo
 				}
 			}
 
-		}		
+		}
 	}
 }
 
@@ -5701,7 +5701,7 @@ function showPersonalGeneByImg_OneNode(canvas1, canvas2, geneNode, mode) {
 	var subElementWidth, elementRelativeWidth;
 	var geneNodeName_show = geneNodeName;
 	var elementStatus = [];
-	
+
 	var i, j, k, m;
 	var extend_width = 10;
 	var img_height = 30, img_width = 21;
@@ -5760,7 +5760,7 @@ function showPersonalGeneByImg_OneNode(canvas1, canvas2, geneNode, mode) {
 	} else {
 		colorStyle = "#000";
 	}
-	
+
 	personalPannel.Panno.details = [];
 
 	for( i = 0; i < geneNodes.length; i++) {
@@ -5775,7 +5775,7 @@ function showPersonalGeneByImg_OneNode(canvas1, canvas2, geneNode, mode) {
 		}
 		elementRelativeFroms[i] = parseInt((parseInt(elementFroms[i]) - startIndex) / searchLength * trackLength);
 		elementRelativeTos[i] = parseInt((parseInt(elementTos[i]) - startIndex + 1) / searchLength * trackLength);
-		
+
 		if(geneNodes[i].getElementsByTagName(xmlTagStatus).length > 0){
 			elementStatus[i] = true;
 		}else{
@@ -5839,7 +5839,7 @@ function showPersonalGeneByImg_OneNode(canvas1, canvas2, geneNode, mode) {
 	if(((/^_/).test(geneNodeName))){
 		geneNodeName_show = (geneNodeName + "").replace("_","");
 	}
-	
+
 	if(canvas1.getContext && canvas2.getContext) {
 		var ctx1 = canvas1.getContext('2d');
 		var ctx2 = canvas2.getContext('2d');
@@ -5882,7 +5882,7 @@ function showPersonalGeneByImg_OneNode(canvas1, canvas2, geneNode, mode) {
 								}else{
 									ctx2.rect(subElementRelativeFroms[i][j] - extend_width, img_height, extend_width, 10);
 								}
-								
+
 								//ctx2.drawImage(imgASS, subElemnetRelativeTos[i][j] - img_width / 2, 0);
 								break;
 							case "sBand":
@@ -5942,7 +5942,7 @@ function showPersonalGeneByImg_OneNode(canvas1, canvas2, geneNode, mode) {
 								}else{
 									ctx2.rect(subElementRelativeFroms[i][j] - extend_width, 3 + img_height, extend_width, 5);
 								}
-								
+
 								//ctx2.drawImage(imgASS, subElemnetRelativeTos[i][j] - img_width / 2, 0);
 								break;
 							case "seBox":
@@ -5967,7 +5967,7 @@ function showPersonalGeneByImg_OneNode(canvas1, canvas2, geneNode, mode) {
 								}else{
 									ctx2.rect(subElementRelativeFroms[i][j] - extend_width, img_height, extend_width, 10);
 								}
-								
+
 								//ctx2.drawImage(imgASS, subElemnetRelativeTos[i][j] - img_width / 2, 0);
 								break;
 							case "pseBox":
@@ -5989,7 +5989,7 @@ function showPersonalGeneByImg_OneNode(canvas1, canvas2, geneNode, mode) {
 								}else{
 									ctx2.rect(subElementRelativeFroms[i][j] - extend_width, img_height, extend_width, 10);
 								}
-								
+
 								//ctx2.drawImage(imgASS, subElemnetRelativeTos[i][j] - img_width / 2, 0);
 								break;
 						}
@@ -6068,7 +6068,7 @@ function showPersonalGeneByImg_OneNode(canvas1, canvas2, geneNode, mode) {
 						canvas1.style.height = (13 + img_height) * packVariants.length - 3;
 						canvas2.height = (13 + img_height) * packVariants.length - 3;
 						canvas2.style.height = (13 + img_height) * packVariants.length - 3;
-						
+
 						ctx1.strokeStyle = "#000";
 						ctx1.fillStyle = "#000";
 						ctx1.fillText(geneNodeName_show, canvas1.width - ctx1.measureText(geneNodeName_show).width, 8);
@@ -6084,7 +6084,7 @@ function showPersonalGeneByImg_OneNode(canvas1, canvas2, geneNode, mode) {
 								personalPannel.Panno.details[packVariants[i][j]].right = elementRelativeTos[packVariants[i][j]];
 								personalPannel.Panno.details[packVariants[i][j]].top = y - 10;
 								personalPannel.Panno.details[packVariants[i][j]].bottom = y;
-								
+
 								if(elementIds[i] != ".") {
 									ctx2.fillStyle = elementColors[packVariants[i][j]];
 									ctx2.strokeStyle = elementColors[packVariants[i][j]];
@@ -6093,13 +6093,13 @@ function showPersonalGeneByImg_OneNode(canvas1, canvas2, geneNode, mode) {
 										ctx2.drawImage(imgStatus, elementRelativeFroms[packVariants[i][j]] - 21, y - 10 - img_height);
 									}
 								}
-								
+
 								ctx2.fillStyle = elementColors[packVariants[i][j]];
 								ctx2.strokeStyle = elementColors[packVariants[i][j]];
 
 								if(geneNodes[packVariants[i][j]].getElementsByTagName(xmlTagSubElement).length == 0) {
 									elementRelativeWidth = elementRelativeTos[packVariants[i][j]] - elementRelativeFroms[packVariants[i][j]] + 1;
-									drawGeneByDirectionBox(elementRelativeFroms[packVariants[i][j]], elementRelativeTos[packVariants[i][j]], elementRelativeWidth, elementDirections[packVariants[i][j]], y, ctx2);									
+									drawGeneByDirectionBox(elementRelativeFroms[packVariants[i][j]], elementRelativeTos[packVariants[i][j]], elementRelativeWidth, elementDirections[packVariants[i][j]], y, ctx2);
 									m = 0;
 									for( k = 0; k < variants[packVariants[i][j]][m].length; k++) {
 										var geneVariantLetters = variantLetters[packVariants[i][j]][m][k].split(":");
@@ -6231,7 +6231,7 @@ function showPersonalGeneByImg_OneNode(canvas1, canvas2, geneNode, mode) {
 					canvas1.style.height = 8 * squishVariants.length - 3;
 					canvas2.height = 8 * squishVariants.length - 3;
 					canvas2.style.height = 8 * squishVariants.length - 3;
-					
+
 					ctx1.strokeStyle = "#000";
 					ctx1.fillStyle = "#000";
 					ctx1.fillText(geneNodeName_show, canvas1.width - ctx1.measureText(geneNodeName_show).width, 8);
@@ -6272,7 +6272,7 @@ function drawPersonalGeneSubElement(from, to, width, type, direction, y, colorSt
 	imgShift = document.getElementById("imgShift");
 	bkgImg_shift = document.getElementById("bkgImg_shift");
 	bkgImg_pshift = document.getElementById("bkgImg_pshift");
-	
+
 	switch(type) {
 		case subElementTypeBoxValue:
 			ctx.fillRect(from, y - 10, width, 10);
@@ -6290,7 +6290,7 @@ function drawPersonalGeneSubElement(from, to, width, type, direction, y, colorSt
 			}else{
 				ctx.rect(from - extend_width, y - 9.5, extend_width, 9);
 			}
-			
+
 			//ctx.drawImage(imgASS, to - img_width / 2, y - img_height - 10);
 			break;
 		case "sBand":
@@ -6350,7 +6350,7 @@ function drawPersonalGeneSubElement(from, to, width, type, direction, y, colorSt
 			}else{
 				ctx.rect(from - extend_width, y - 6.5, extend_width, 4);
 			}
-			
+
 			//ctx.drawImage(imgASS, to - img_width / 2, y - img_height - 10);
 			break;
 		case "seBox":
@@ -6367,7 +6367,7 @@ function drawPersonalGeneSubElement(from, to, width, type, direction, y, colorSt
 			}
 			//ctx.drawImage(bkgImg_shift, 0, 0, width, 10, from, y - 10, width, 10);
 			ctx.rect(from, y - 9.5, width, 9);
-			
+
 			/*if(preType != "shBox" && preType != "seBox") {
 				ctx.drawImage(imgShift, from - img_width / 2, y - img_height - 10);
 			}*/
@@ -6376,7 +6376,7 @@ function drawPersonalGeneSubElement(from, to, width, type, direction, y, colorSt
 			}else{
 				ctx.rect(from - extend_width, y - 9.5, extend_width, 9);
 			}
-			
+
 			//ctx.drawImage(imgASS, to - img_width / 2, y - img_height - 10);
 			break;
 		case "pseBox":
@@ -6398,7 +6398,7 @@ function drawPersonalGeneSubElement(from, to, width, type, direction, y, colorSt
 			}else{
 				ctx.rect(from - extend_width, y - 9.5, extend_width, 9);
 			}
-			
+
 			//ctx.drawImage(imgASS, to - img_width / 2, y - img_height - 10);
 			break;
 	}
@@ -6557,7 +6557,7 @@ function showGene(canvas1, canvas2, geneNode, mode) {
 			break;
 		}
 	}
-	
+
 	if(((/^_/).test(geneNodeName))){
 		geneNodeName_show = (geneNodeName + "").replace("_","");
 		//add by Liran for Pfanno/Pclns detail
@@ -6574,7 +6574,7 @@ function showGene(canvas1, canvas2, geneNode, mode) {
 		}
 		//add by Liran for Pfanno/Pclns detail
 	}
-	
+
 	if(trackItemIndex< trackItems.length){
 		trackItems[trackItemIndex].details = [];
 	}
@@ -6711,7 +6711,7 @@ function showGene(canvas1, canvas2, geneNode, mode) {
 							canvas1.style.height = 13 * packVariants.length - 3;
 							canvas2.height = 13 * packVariants.length - 3;
 							canvas2.style.height = 13 * packVariants.length - 3;
-							
+
 							ctx1.strokeStyle = "#000";
 							ctx1.fillStyle = "#000";
 							ctx1.fillText(geneNodeName_show, canvas1.width - ctx1.measureText(geneNodeName_show).width, 8);
@@ -6788,11 +6788,11 @@ function showGene(canvas1, canvas2, geneNode, mode) {
 						canvas1.style.height = 8 * squishVariants.length - 3;
 						canvas2.height = 8 * squishVariants.length - 3;
 						canvas2.style.height = 8 * squishVariants.length - 3;
-						
+
 						ctx1.strokeStyle = "#000";
 						ctx1.fillStyle = "#000";
 						ctx1.fillText(geneNodeName_show, canvas1.width - ctx1.measureText(geneNodeName_show).width, 8);
-						
+
 						y = 0;
 						for( i = 0; i < squishVariants.length; i++) {
 							for( j = 0; j < squishVariants[i].length; j++) {
@@ -6976,7 +6976,7 @@ function showGene(canvas1, canvas2, geneNode, mode) {
 							canvas1.style.height = 13 * packVariants.length - 3;
 							canvas2.height = 13 * packVariants.length - 3;
 							canvas2.style.height = 13 * packVariants.length - 3;
-							
+
 							ctx1.strokeStyle = "#000";
 							ctx1.fillStyle = "#000";
 							ctx1.fillText(geneNodeName_show, canvas1.width - ctx1.measureText(geneNodeName_show).width, 8);
@@ -7030,7 +7030,7 @@ function showGene(canvas1, canvas2, geneNode, mode) {
 												ctx2.fill();
 											}
 										}
-										
+
 									} else {
 										for( k = 0; k < subElements[packVariants[i][j]].length; k++) {
 											subElementWidth = Math.abs(subElemnetRelativeTos[packVariants[i][j]][k] - subElementRelativeFroms[packVariants[i][j]][k] + 1);
@@ -7117,7 +7117,7 @@ function showGene(canvas1, canvas2, geneNode, mode) {
 						canvas1.style.height = 8 * squishVariants.length - 3;
 						canvas2.height = 8 * squishVariants.length - 3;
 						canvas2.style.height = 8 * squishVariants.length - 3;
-						
+
 						ctx1.strokeStyle = "#000";
 						ctx1.fillStyle = "#000";
 						ctx1.fillText(geneNodeName_show, canvas1.width - ctx1.measureText(geneNodeName_show).width, 8);
@@ -7301,7 +7301,7 @@ function handleGetgetAnnotationsStateChange() {
 					trackItems[h_idx].dataType = trackList[i].split(/:/)[3];
 					trackItems[h_idx].isServer = 1;
 					trackItems[h_idx].details = [];
-				
+
 					if(trackItems[h_idx].dataType == "VCF" || trackItems[h_idx].dataType == "GVF") {
 						personalPannel.personalTrackItems.Pvars.push("_" + trackItems[h_idx].id);
 					}
@@ -7316,7 +7316,7 @@ function handleGetgetAnnotationsStateChange() {
 			//		if(trackItems[h_idx].group == "Gene"){
 					if(trackItems[h_idx].dataType == "ANNO"){
 						personalPannel.personalTrackItems.Pannos.push("_" + trackItems[h_idx].id);
-					}		
+					}
 					if(trackItems[h_idx].mode != "hide") {
 						createTrack(trackItems[h_idx].id,trackItems[h_idx].mode);
 					}
@@ -7326,7 +7326,7 @@ function handleGetgetAnnotationsStateChange() {
 			//personal pannel initialize: add tr&canvas
 			if(personalPannel.Pvar.id){
 				createPPGTrack(personalPannel.Pvar.id, personalPannel.Pvar.mode);
-				
+
 				if(personalPannel.Pfanno.id){
 					createPPOtherTrack(personalPannel.Pfanno.id, personalPannel.Pfanno.mode);
 				}
@@ -7336,7 +7336,7 @@ function handleGetgetAnnotationsStateChange() {
 				for(i = 0; i < personalPannel.Pclns.length; i++){
 					createPPOtherTrack(personalPannel.Pclns[i].id, personalPannel.Pclns[i].mode);
 				}
-				
+
 				var PP_top = (document.body.clientHeight + document.body.scrollTop - $("#personalPannel").height() - 10);
 			//	var PP_top = (document.body.clientHeight + document.body.scrollTop - $("#personalPannel").height())/2;
 				PP_top = PP_top > 100 ? PP_top : 100;//added by Liran
@@ -7344,7 +7344,7 @@ function handleGetgetAnnotationsStateChange() {
 				$(document.getElementById("personalPannel")).css("display", "block");
 				$(document.getElementById("personalPannel")).css("top", PP_top);
 				$(document.getElementById("personalPannel")).css("left", PP_left);
-				
+
 				$(document.getElementById("ppCloseBtn")).unbind();
 				$(document.getElementById("ppMin")).unbind();
 				$(document.getElementById("ppSet")).unbind();
@@ -7358,18 +7358,18 @@ function handleGetgetAnnotationsStateChange() {
 			if($.cookie("customTrackList")) {
 				var customTrackList = $.cookie("customTrackList").split(",");
 				var j = trackItems.length, k;
-				
+
 				for( k = 0; k < customTrackList.length; k++, j++) {
 					trackItems[j] = [];
 					trackItems[j].id = customTrackList[k].split(/:/)[0];
 					trackItems[j].mode = customTrackList[k].split(/:/)[1];
 					trackItems[j].dataType = customTrackList[k].split(/:/)[2];
 					trackItems[j].isServer = 0;
-					
+
 					if(trackItems[j].dataType == "VCF" || trackItems[j].dataType == "GVF") {
 						personalPannel.personalTrackItems.Pvars.push("_" + trackItems[j].id);
 					}
-					
+
 					/* add by Liran to enable customized tracks appear in personal track setting*/
 					if(trackItems[j].dataType == "GDF"){
 						personalPannel.personalTrackItems.Pclnss.push("_" + trackItems[j].id);
@@ -7379,7 +7379,7 @@ function handleGetgetAnnotationsStateChange() {
 					}
 					if(trackItems[j].dataType == "ANNO"){
 						personalPannel.personalTrackItems.Pannos.push("_" + trackItems[j].id);
-					}		
+					}
 					/* add by Liran to enable customized tracks appear in personal track setting*/
 					if(trackItems[j].mode != "hide") {
 						createTrack(trackItems[j].id,trackItems[j].mode);
@@ -7405,9 +7405,9 @@ function removeTrack2(trackId) {
 
 		if(trackItems[trackItemIndex].superid) {
 			removeTrack(trackId);
-			
+
 			deleteTrackArray = trackItems.splice(trackItemIndex, 1);
-			
+
 			//删除personalPannel.personalTrackItems.Pvars中的的个人基因组记录
 			for(var Pvars_i = 0; Pvars_i < personalPannel.personalTrackItems.Pvars.length; Pvars_i++) {
 				if(personalPannel.personalTrackItems.Pvars[Pvars_i] == ("_" + deleteTrackArray[0].id)) {
@@ -7440,7 +7440,7 @@ function removeTrack2(trackId) {
 			 }*/
 		} else {
 			var mode = "hide";
-			
+
 			/*
 			//为了区别与track table中的tr的id，所以在原有的track的id之上加上“select”来做select元素的id
 			var trackSlelectObj = document.getElementById(trackId + "select");
@@ -7535,7 +7535,7 @@ function handleRemoveSubtrackGetparamsRequest() {
 							trackItems[trackItems.length - 1].group = deleteTrackArray[0].group;
 							trackItems[trackItems.length - 1].isServer = deleteTrackArray[0].isServer;
 							trackItems[trackItems.length - 1].details = [];
-							
+
 							/*var trackItemObj = [];
 							trackItemObj.id = deleteTrackArray[0].superid;
 							trackItemObj.mode = "hide";
@@ -7683,10 +7683,10 @@ function createTrack(trackId, mode) {
 	canvasNodes[0].onmousedown = mouseDown;
 
 	canvasNodes[1].onmousedown = mouseDownRightCanvas;
-	
+
 	addMousewheelEvent(canvasNodes[1], mousewheelHandler);
-	
-	$(canvasNodes[1]).draggable({ 
+
+	$(canvasNodes[1]).draggable({
 		axis: "x" ,
 		cursor: "url(./image/Grabber.cur),auto" ,
 		drag : function(event, ui) {
@@ -7699,14 +7699,14 @@ function createTrack(trackId, mode) {
 			dragStopHandler(ui.position.left);
 		}
 	});
-	
+
 	$(canvasNodes[1]).css("left" , $("#refTrack1").css("left"));
 
 	var removeTrackIconObj = trNode.getElementsByClassName("close")[0];
 
 	//通过闭包传递参数
 	removeTrackIconObj.onclick = removeTrack2(trackId);
-	
+
 	var modechangeIconObj;
 	if(mode){
 		if(mode=="dense"){
@@ -7850,10 +7850,10 @@ function miniPersonalPannel() {
 	var _top = _personalPanel.css('top');
 	var _left = _personalPanel.css('left');
 	isMini_personalpannel = 1;
-	
+
 	_personalPanel.animate(
-			{ 
-            width: 0, 
+			{
+            width: 0,
             height: 0,
             top: $(window).height() / 3,
             left: ($("#divTrack").position().left+1110>$(window).width()-32?$(window).width()-32:$("#divTrack").position().left+1110),
@@ -7876,8 +7876,8 @@ function miniPersonalPannel() {
 								showWindowBtn.remove();
 								_personalPanel.css("display","block");
 								_personalPanel.animate(
-										{ 
-												width: _width, 
+										{
+												width: _width,
 												height: "auto",
 												top: _top,
 												left: _left,
@@ -7937,7 +7937,7 @@ function setPersonalPannel(){
 		labelObj.setAttribute("for", scoremeths_temp[i] + "radio");
 		labelObj.innerHTML = scoremeths_temp[i];
 		tdNode.appendChild(labelObj);
-	
+
 		radioObj.onclick = function(event){
 			var target = event.target || event.srcElement;
 			scoremethPvar = target.getAttribute("value");
@@ -7965,11 +7965,11 @@ function setPersonalPannel(){
 		labelObj.setAttribute("for", personalPannel.personalTrackItems.Pfannos[i] + "radio");
 		labelObj.innerHTML = personalPannel.personalTrackItems.Pfannos[i].substring(1);
 		tdNode.appendChild(labelObj);
-		
+
 		radioObj.onclick = function(event){
 			var target = event.target || event.srcElement;
 			var Pfanno_id = target.getAttribute("value").replace("_","");
-			
+
 			addPfannoHttpRequest(Pfanno_id);
 		};
 	}
@@ -7992,11 +7992,11 @@ function setPersonalPannel(){
 		labelObj.setAttribute("for", personalPannel.personalTrackItems.Pannos[i] + "radio");
 		labelObj.innerHTML = personalPannel.personalTrackItems.Pannos[i].substring(1);
 		tdNode.appendChild(labelObj);
-		
+
 		radioObj.onclick = function(event){
 			var target = event.target || event.srcElement;
 			var Panno_id = target.getAttribute("value").replace("_","");
-			
+
 			addPannoHttpRequest(Panno_id);
 		};
 	}
@@ -8022,12 +8022,12 @@ function setPersonalPannel(){
 		labelObj.setAttribute("for", personalPannel.personalTrackItems.Pclnss[i] + "chk");
 		labelObj.innerHTML = personalPannel.personalTrackItems.Pclnss[i].substring(1);
 		tdNode.appendChild(labelObj);
-		
+
 		radioObj.onclick = function(event){
 			if(personalPannel.Panno.id && personalPannel.Pfanno.id){
 				var target = event.target || event.srcElement;
 				var Pclns_id = target.getAttribute("value").replace("_","");
-				
+
 				if($(target).attr("checked")){
 					addPclnsHttpRequest(Pclns_id);
 				}else{
@@ -8167,12 +8167,12 @@ function addPvarHttpRequest(trackId) {
 			break;
 		}
 	}
-	
+
 	initPvar_superid = P_track;
 	if(P_mode == "hide" || P_mode == ""){
 		P_mode = "pack";
 	}
-	
+
 	url = url + P_track + "&modes=" + P_mode + "&id=" + P_id;
 
 	personalPannel.Pvar.id = "_" + trackId;
@@ -8191,13 +8191,13 @@ function addPvarHttpRequest(trackId) {
 function addPvarHttpRequest2(PvarID,trackId) {//for add individual directly
 	var url = "servlet/test.do?action=addPvar&tracks=";
 	var P_mode;
-	
+
 	initPvar_superid = trackId;
 	P_mode=personalPannel.Pvar.mode;
 	if(P_mode == "hide" || P_mode == ""){
 		P_mode = "pack";
 	}
-	
+
 	url = url + trackId + "&modes=" + P_mode + "&id=" + PvarID;
 
 	personalPannel.Pvar.id = "_" + PvarID;
@@ -8282,7 +8282,7 @@ function handle_addPvar_Request() {
 					}
 				}
 			}
-			
+
 			if(personalPinned){
 				if(document.getElementById(loadingId)) {
 					hideLoadingImage(loadingId);
@@ -8321,11 +8321,11 @@ function addPfannoHttpRequest(trackId){
 			break;
 		}
 	}
-	
+
 	if(P_mode == "hide"){
 		P_mode = "dense";
 	}
-	
+
 	url = url + P_track + "&modes=" + P_mode;
 
 	personalPannel.Pfanno.id = "_" + trackId;
@@ -8342,14 +8342,14 @@ function handle_addPfanno_Request(){
 			var XMLDoc = XMLHttpReq.responseXML;
 			var elementNodes = XMLDoc.getElementsByTagName(xmlTagElements);
 			var i, j;
-			
+
 			var ppTrackTable;
 			if(personalPinned){
 				ppTrackTable = document.getElementById("tableTrack");
 			}else{
 				ppTrackTable = document.getElementById("ppTrackTable");
 			}
-			
+
 			for( j = 0; j < personalPannel.personalTrackItems.Pfannos.length; j++) {
 				var trNode_Pfanno = document.getElementById(personalPannel.personalTrackItems.Pfannos[j]);
 				if(trNode_Pfanno) {
@@ -8358,7 +8358,7 @@ function handle_addPfanno_Request(){
 					break;
 				}
 			}
-	
+
 			var trNode_Pfanno = document.getElementById(personalPannel.Pfanno.id);
 			if(trNode_Pfanno){
 				i = trNode_Pfanno.rowIndex;
@@ -8376,7 +8376,7 @@ function handle_addPfanno_Request(){
 					ppTrackTable.deleteRow(i);
 				}
 			}
-			
+
 			//Pfanno track
 			if(personalPannel.Pfanno.id){
 				var personal_fanno_node;
@@ -8436,11 +8436,11 @@ function addPannoHttpRequest(trackId){
 			break;
 		}
 	}
-	
+
 	if(P_mode == "hide"){
 		P_mode = "dense";
 	}
-	
+
 	url = url + P_track + "&modes=" + P_mode;
 
 	personalPannel.Panno.id = "_" + trackId;
@@ -8457,7 +8457,7 @@ function handle_addPanno_Request(){
 			var XMLDoc = XMLHttpReq.responseXML;
 			var elementNodes = XMLDoc.getElementsByTagName(xmlTagElements);
 			var i, j;
-			
+
 			var ppTrackTable;
 			if(personalPinned){
 				ppTrackTable = document.getElementById("tableTrack");
@@ -8479,7 +8479,7 @@ function handle_addPanno_Request(){
 					ppTrackTable.deleteRow(i);
 				}
 			}
-			
+
 			if(personalPannel.Panno.id){
 				var personal_anno_nodes = [];
 				for(i=0;i<elementNodes.length;i++){
@@ -8527,13 +8527,13 @@ function addPclnsHttpRequest(trackId){
 			break;
 		}
 	}
-	
+
 	if(P_mode == "hide"){
 		P_mode = "dense";
 	}
-	
+
 	url = url + P_track + "&modes=" + P_mode;
-	
+
 	personalPannel.Pclns[personalPannel.Pclns.length] = [];
 	personalPannel.Pclns[personalPannel.Pclns.length - 1].id = "_" + trackId;
 	personalPannel.Pclns[personalPannel.Pclns.length - 1].mode = P_mode;
@@ -8547,11 +8547,11 @@ function handle_addPclns_Request(){
 		if(XMLHttpReq.status == 200) {
 			var XMLDoc = XMLHttpReq.responseXML;
 			var elementNode = XMLDoc.getElementsByTagName(xmlTagElements)[0];
-			
+
 			createPPOtherTrack(personalPannel.Pclns[personalPannel.Pclns.length - 1].id, personalPannel.Pclns[personalPannel.Pclns.length - 1].mode);
 			canvasNodes = document.getElementById(personalPannel.Pclns[personalPannel.Pclns.length - 1].id).getElementsByTagName("canvas");
 			showGene(canvasNodes[0], canvasNodes[1], elementNode, personalPannel.Pclns[personalPannel.Pclns.length - 1].mode);
-			
+
 //			var ppTop = (document.body.clientHeight + document.body.scrollTop - $("#personalPannel").height() - 10);
 //			ppTop = ppTop > 50 ? ppTop : 50;
 //			$("#personalPannel").animate({top:ppTop});
@@ -8567,7 +8567,7 @@ function removePclnsHttpRequest(trackId){
 			break;
 		}
 	}
-	
+
 	var ppTrackTable;
 	if(personalPinned){
 		ppTrackTable = document.getElementById("tableTrack");
@@ -8577,7 +8577,7 @@ function removePclnsHttpRequest(trackId){
 	var trNode = document.getElementById("_" + trackId);
 	var rowIndex = trNode.rowIndex;
 	ppTrackTable.deleteRow(rowIndex);
-	
+
 	XMLHttpReq.onreadystatechange = function(){};
 	XMLHttpReq.open("GET", url, true);
 	XMLHttpReq.send(null);
@@ -8756,12 +8756,12 @@ function createPPGTrack(trackId, mode) {
 		canvasNodes[1].onmousedown =  mouseDownRightCanvasInPP;
 	}
 	//$(canvasNodes[1]).bind("mousedown", mouseDownRightCanvasInPP);
-	
+
 	addMousewheelEvent(canvasNodes[1], mousewheelHandler);
-	
+
 	$(canvasNodes[1]).css("left" , $("#refTrack1").css("left"));
-	
-	$(canvasNodes[1]).draggable({ 
+
+	$(canvasNodes[1]).draggable({
 		axis: "x" ,
 		cursor: "url(./image/Grabber.cur),auto" ,
 		drag : function(event, ui) {
@@ -8774,7 +8774,7 @@ function createPPGTrack(trackId, mode) {
 			dragStopHandler(ui.position.left);
 		}
 	});
-	
+
 	var modechangeIconObj;
 	if(mode){
 		if(mode=="dense"){
@@ -8846,11 +8846,11 @@ function createPPOtherTrack(trackId, mode) {
 		canvasNodes[1].onmousedown =  mouseDownRightCanvasInPP;
 	}
 	//$(canvasNodes[1]).bind("mousedown", mouseDownRightCanvasInPP);
-	
+
 	addMousewheelEvent(canvasNodes[1], mousewheelHandler);
-	
+
 	$(canvasNodes[1]).css("left" , $("#refTrack1").css("left"));
-	
+
 	$(canvasNodes[1]).draggable({
 		axis : "x",
 		cursor : "url(./image/Grabber.cur),auto",
@@ -8864,7 +8864,7 @@ function createPPOtherTrack(trackId, mode) {
 			dragStopHandler(ui.position.left);
 		}
 	});
-	
+
 	var modechangeIconObj;
 	if(mode){
 		if(mode=="dense"){
@@ -8875,7 +8875,7 @@ function createPPOtherTrack(trackId, mode) {
 			modechangeIconObj.onclick = changePPTrackModeByBtn(trackId);
 		}
 	}
-	
+
 	var removeTrackIconObj = trNode.getElementsByClassName("close")[0];
 	removeTrackIconObj.onclick = removeTrackByCloseBtn_in_personalpannel(trackId);
 }
@@ -9360,7 +9360,7 @@ function customTrackSubmit() {
 	$.cookie("customTrackList", cookieStr, {
 		expires : 10 / 24
 	});
-	
+
 
 	if(trackItems[temp_trackItemsLength].mode != "hide") {
 		createTrack(trackItems[temp_trackItemsLength].id, trackItems[temp_trackItemsLength].mode);
@@ -9557,47 +9557,47 @@ function customtracks_configtext_setHTMLandJS(configText){
 		trackItems[trackItems.length - 1].mode = modes_array[i];
 		trackItems[trackItems.length - 1].dataType = Types_array[i];
 		trackItems[trackItems.length - 1].isServer = 0;
-		
+
 		cookieStr = cookieStr + tracks_array[i];
 		cookieStr = cookieStr + ":";
 		cookieStr = cookieStr + modes_array[i];
 		cookieStr = cookieStr + ":";
 		cookieStr = cookieStr + Types_array[i];
 		cookieStr = cookieStr + ",";
-		
+
 		if(modes_array[i] != "hide") {
 			createTrack(tracks_array[i],modes_array[i]);
 		}
-		
+
 		if(Types_array[i] == "VCF" || Types_array[i] == "GVF") {
 			personalPannel.personalTrackItems.Pvars.push("_" + tracks_array[i]);
 		}
 	}
-	
+
 	cookieStr = cookieStr.replace(/,$/gi,"");
 	$.cookie("customTrackList", cookieStr, {
 		expires : 10 / 24
 	});
-	
+
 	tb_remove();
 	trackItems_setting2();
 }
 
 function test_customTrackConfigureText(configText){
 	var tracks_value_reg = new RegExp("[^_]([^,])+(,[^_]([^,])+)*");
-	
+
 	var modes_value_reg = new RegExp("(hide|dense|pack)(,(hide|dense|pack))*");
 	var Types_value_reg = new RegExp("(BAM|BB|GDF|BEDGZ|ANNO|BW|GVF|VCF|GRF)(,(BAM|BB|GDF|BEDGZ|ANNO|BW|GVF|VCF|GRF))*");
 	var Links_value1_reg = new RegExp("(chr([1-9]|1[0-9]|2[0-2]|X|Y|M):([^;,]+);)+");
 	var Links_value2_reg = new RegExp("[^,;]+");
-	
+
 	var tracks_set_reg = new RegExp("tracks=(.|\n)+");
 	var modes_set_reg = new RegExp("modes=(.|\n)+");
 	var Types_set_reg = new RegExp("types=(.|\n)+");
 	var Links_set_reg = new RegExp("links=(.|\n)+");
-	
+
 	var config_reg = new RegExp("(.|\n)+&(.|\n)+&(.|\n)+&(.|\n)+");
-	
+
 	var testResult = {};
 	testResult.pass = false;
 	testResult.items = {};
@@ -9616,7 +9616,7 @@ function test_customTrackConfigureText(configText){
 	testResult.items.modes.modes_value = false;
 	testResult.items.Types.Types_value = false;
 	testResult.items.Links.Links_value = false;
-	
+
 	var configTextObj = {};
 	configTextObj.configText = configText;
 	configTextObj.tracks = {};
@@ -9635,7 +9635,7 @@ function test_customTrackConfigureText(configText){
 	configTextObj.Links.configText = "";
 	configTextObj.Links.value = "";
 	configTextObj.Links.num = 0;
-	
+
 	var configArray = configText.split("&");
 	var i, j;
 	for(i=0; i<configArray.length;i++){
@@ -9657,13 +9657,13 @@ function test_customTrackConfigureText(configText){
 			configTextObj.Links.num = configTextObj.Links.value.split(",").length;
 		}
 	}
-	
+
 	testResult.items.format = config_reg.test(configText);
-	
+
 	if(configTextObj.modes.num == configTextObj.tracks.num && configTextObj.Types.num == configTextObj.tracks.num && configTextObj.Links.num == configTextObj.tracks.num) {
 		testResult.items.num = true;
 	}
-	
+
 	testResult.items.tracks.tracks_set = tracks_set_reg.test(configTextObj.tracks.configText);
 	testResult.items.modes.modes_set = modes_set_reg.test(configTextObj.modes.configText);
 	testResult.items.Types.Types_set = Types_set_reg.test(configTextObj.Types.configText);
@@ -9671,9 +9671,9 @@ function test_customTrackConfigureText(configText){
 	testResult.items.tracks.tracks_value = tracks_value_reg.test(configTextObj.tracks.value);
 	testResult.items.modes.modes_value = modes_value_reg.test(configTextObj.modes.value);
 	testResult.items.Types.Types_value = Types_value_reg.test(configTextObj.Types.value);
-	
+
 	var customtrack_nameList = configTextObj.tracks.value.split(",");
-	
+
 	for(i = 0; i < customtrack_nameList.length; i++){
 		if(/^_/.test(customtrack_nameList[i])){
 			testResult.items.tracks.tracks_value = false;
@@ -9688,7 +9688,7 @@ function test_customTrackConfigureText(configText){
 			}
 		}
 	}
-	
+
 	for(i = 0; i < customtrack_nameList.length - 1; i++){
 		for(j = i + 1; j < customtrack_nameList.length; j++){
 			if(customtrack_nameList[i] == customtrack_nameList[j]){
@@ -9698,7 +9698,7 @@ function test_customTrackConfigureText(configText){
 			}
 		}
 	}
-	
+
 	var Links_value_array = configTextObj.Links.value.split(",");
 	var temp_bool_value = false;
 	for(i =0; i<Links_value_array.length; i++){
@@ -9716,14 +9716,14 @@ function test_customTrackConfigureText(configText){
 	}else{
 		testResult.items.Links.Links_value = true;
 	}
-	
-	
+
+
 	if(testResult.items.format && testResult.items.num && testResult.items.tracks.tracks_set && testResult.items.modes.modes_set && testResult.items.Links.Links_set && testResult.items.tracks.tracks_value && testResult.items.modes.modes_value && testResult.items.Types.Types_value && testResult.items.Links.Links_value) {
 		testResult.pass = true;
 	} else {
 		testResult.pass = false;
 	}
-	
+
 	return testResult;
 }
 
@@ -9923,7 +9923,7 @@ $(document).ready(function(){
 		"border": "none",
 		"opacity": 0
 	});
-	
+
 	$("#overlay_above_cytobandsImg").imgAreaSelect({
 		classPrefix : "chrImgareaselect",
 		handles : false,
@@ -10010,9 +10010,9 @@ $(document).ready(function() {
 	}
 });
 //search input autocomplete
-$(function() { 
-    $("#search_field").autocomplete({ 
-        source: function(request, response) { 
+$(function() {
+    $("#search_field").autocomplete({
+        source: function(request, response) {
         	var input = request.term;
         	if(input.length >3)
         	{
@@ -10024,7 +10024,7 @@ $(function() {
         				return;
         			}
     			}
-        		
+
         	}
         	$("#ui-id-1").css("left", $("#search_field").position().left - 3);
         	$("#ui-id-1").css("top", $("#search_field").position().top + $("#search_field").outerHeight(true));
@@ -10034,10 +10034,10 @@ $(function() {
 			$("#ui-id-1").mouseleave(function(e){
 				$("#select_info").css("display", "none");
 			});
-        	$.ajax({ 
-                url: "servlet/test.do?action=findGene&prefix=" + request.term , 
+        	$.ajax({
+                url: "servlet/test.do?action=findGene&prefix=" + request.term ,
                 type: "get",
-                dataType: "xml", 
+                dataType: "xml",
                 success: function(xmlResponse) {
                 	$("#wait_div").css("display", "none");
                 	var hasData = false;
@@ -10066,7 +10066,7 @@ $(function() {
                 	//here is you deal code when request returned unsuccessfully.
                 	//alert('request error!');
                 }
-            }); 
+            });
         },
         focus: function( event, ui ) {
         	if(ui.item.value==null||ui.item.value=="")
@@ -10080,7 +10080,7 @@ $(function() {
 			//$("#select_info").css("height", 200);
 			$("#select_info").css("background-color", "#ffffff");
 			//init the showing panel with waiting image
-			
+
 			$("#select_info").html("");
 			$("#select_info").append("<br><br><center><image src=\"image/ui-anim_basic_16x16.gif\"></image>");
 			$("#select_info").append("<p><centet>one moment, loading......</center></p>");
@@ -10091,10 +10091,10 @@ $(function() {
 				$("#select_info").css("display", "none");
 			});
 			//send an ajax request to get the data to generate a picture
-			$.ajax({ 
-				url: "servlet/test.do?action=getGene&gene=" + ui.item.label,//here is your url 
+			$.ajax({
+				url: "servlet/test.do?action=getGene&gene=" + ui.item.label,//here is your url
                 type:"get",
-                dataType: "xml", 
+                dataType: "xml",
                 success: function(xmlResponse) {
                 	$("#select_info").html("");
                 	$("Gene", xmlResponse ).map(function() {
@@ -10106,7 +10106,7 @@ $(function() {
                 			if(name !="Chromosome" && name != xmlTagFrom && name!= xmlTagTo)
                 				$("#gene_info_table").append("<tr><td align=\"left\">"+name+": </td><td align=\"left\">"+$(this).text()+"</td></tr>");
                 		});
-					}); 
+					});
                 	//here is you deal code when request returned successfully. To use the return data to generate a picture
                 },
                 error: function(xmlResponse){
@@ -10128,11 +10128,11 @@ $(function() {
 			end_user = parseInt(temp_scale.split("-")[1]);
 			normalSearchIndex();
 			showRef();
-			/*$.ajax({ 
-                url: "servlet/test.do?action=getGene&gene=" + ui.item.label,//here is your url 
+			/*$.ajax({
+                url: "servlet/test.do?action=getGene&gene=" + ui.item.label,//here is your url
                 type:"get",
-                dataType: "xml", 
-                success: function(xmlResponse) { 
+                dataType: "xml",
+                success: function(xmlResponse) {
                 	//here is you deal code when request returned successfully.
                 },
                 error: function(xmlResponse){
@@ -10190,9 +10190,10 @@ function trackItems_setting2(){
 	}
 	var ts_content_centerObj = document.getElementById("tracksmanageOnmainPannel");//.getElementsByTagName("center")[0]
 	ts_content_centerObj.innerHTML = "";
-	
+
 	var collapse_expand_center = document.createElement("center");
-	collapse_expand_center.innerHTML = "<table style=\" width:500px;text-align:center;\"><tr><td><input id=\"ts_collapseBtn\" type=\"button\" value=\"collapse all\"></td><td><input id=\"ts_expandBtn\" type=\"button\" value=\"expand all\"></td></tr></table>";
+	collapse_expand_center.innerHTML = "<table class=\"data-show-mode\"><tr><td><input class=\"data-show-btn\" id=\"ts_collapseBtn\" type=\"button\" value=\"collapse all\"></td><td><input class=\"data-show-btn\" id=\"ts_expandBtn\" type=\"button\" value=\"expand all\"></td></tr></table>";
+
 	ts_content_centerObj.appendChild(collapse_expand_center);
 	$("#ts_collapseBtn").click(function(){
 		var temp_group_content_nodes = $(ts_content_centerObj).find(".group_content_div");
@@ -10210,7 +10211,7 @@ function trackItems_setting2(){
 			}
 		}
 	});
-	
+
 	var group_divObj;
 	var group_title_divObj, group_content_divObj;
 	var group_title_name_centerObj, group_title_name_spanObj, group_title_icon_divObj, group_title_icon_spanObj;
@@ -10241,7 +10242,7 @@ function trackItems_setting2(){
 		group_title_name_spanObj = document.createElement("span");
 		group_title_name_spanObj.innerHTML = trackGroups[i].name;
 		group_title_name_centerObj.appendChild(group_title_name_spanObj);
-		
+
 		group_title_icon_divObj = document.createElement("div");
 		group_title_name_centerObj.appendChild(group_title_icon_divObj);
 		$(group_title_icon_divObj).css({
@@ -10257,7 +10258,7 @@ function trackItems_setting2(){
 		}
 		//group_title_icon_spanObj.className = "group_content_showBtn";
 		group_title_icon_divObj.appendChild(group_title_icon_spanObj);
-		
+
 		group_content_divObj = document.createElement("div");
 		group_content_divObj.id = trackGroups[i].name + "_group_content";
 		group_divObj.appendChild(group_content_divObj);
@@ -10282,7 +10283,7 @@ function trackItems_setting2(){
 			labelObj.setAttribute("for", trackItems[trackGroups[i].trackList[j]].id + "-chk");
 			labelObj.innerHTML = trackItems[trackGroups[i].trackList[j]].id;
 			tdNode.appendChild(labelObj);
-			
+
 			checkboxObj.onclick = function(event){
 				var target = event.target || event.srcElement;
 				var temp_trackid = target.getAttribute("value");
@@ -10428,7 +10429,7 @@ function trackItems_setting(){
 		group_title_name_spanObj = document.createElement("span");
 		group_title_name_spanObj.innerHTML = trackGroups[i].name;
 		group_title_name_centerObj.appendChild(group_title_name_spanObj);
-		
+
 		group_title_icon_divObj = document.createElement("div");
 		group_title_name_centerObj.appendChild(group_title_icon_divObj);
 		$(group_title_icon_divObj).css({
@@ -10439,7 +10440,7 @@ function trackItems_setting(){
 		group_title_icon_spanObj = document.createElement("span");
 		group_title_icon_spanObj.className = "group_content_showBtn";
 		group_title_icon_divObj.appendChild(group_title_icon_spanObj);
-		
+
 		group_content_divObj = document.createElement("div");
 		group_content_divObj.id = trackGroups[i].name + "_group_content";
 		group_divObj.appendChild(group_content_divObj);
@@ -10464,7 +10465,7 @@ function trackItems_setting(){
 			labelObj.setAttribute("for", trackItems[trackGroups[i].trackList[j]].id + "-chk");
 			labelObj.innerHTML = trackItems[trackGroups[i].trackList[j]].id;
 			tdNode.appendChild(labelObj);
-			
+
 			checkboxObj.onclick = function(event){
 				var target = event.target || event.srcElement;
 				var temp_trackid = target.getAttribute("value");
@@ -10659,7 +10660,7 @@ function trackItems_setting3(){//individualItems setting
 				"clear":"both",
 				"margin":"2px"
 			});
-			
+
 			radioboxObj.onclick = function(event){
 				var target = event.target || event.srcElement;
 				var Pvar_id = target.getAttribute("value").split('@');
@@ -10689,7 +10690,7 @@ function trackItems_setting3(){//individualItems setting
 					$(document.getElementById("ppPin")).click(pinPersonalPannel);
 					$(document.getElementById("ppSet")).click(setPersonalPannel);
 				}
-				addPvarHttpRequest2(Pvar_id[0],Pvar_id[1]); 
+				addPvarHttpRequest2(Pvar_id[0],Pvar_id[1]);
 				indsetWindow_close();
 				//to be test whether need closet
 			};
@@ -10795,7 +10796,7 @@ function trackItems_setting3(){//individualItems setting
 				"clear":"both",
 				"margin":"2px"
 			});
-			
+
 			radioboxObj.onclick = function(event){
 				var target = event.target || event.srcElement;
 				var Pvar_id = target.getAttribute("value").split('@');
@@ -10824,7 +10825,7 @@ function trackItems_setting3(){//individualItems setting
 					$(document.getElementById("ppPin")).click(pinPersonalPannel);
 					$(document.getElementById("ppSet")).click(setPersonalPannel);
 				}
-				addPvarHttpRequest2(Pvar_id[0],Pvar_id[1]); 
+				addPvarHttpRequest2(Pvar_id[0],Pvar_id[1]);
 				indsetWindow_close();
 				//to be test whether need closet
 			};
@@ -10866,7 +10867,7 @@ function trackItems_setting3(){//individualItems setting
 
 $(document).ready(function(){
 //	document.getElementById("helpWindow-li").onclick = helpWindow_alert;
-	document.getElementById("indsetWindow-li").onclick = indsetWindow_alert;
+//	document.getElementById("indsetWindow-li").onclick = indsetWindow_alert; // PGB头部导航中被被注释掉的弹框数据
 	document.getElementById("browseJump").onclick = browseJumpWindow_alert;
 	document.getElementById("browseJumpIcon2").onclick = browseJumpWindow_alert;
 });
@@ -10951,7 +10952,7 @@ function init_removeExternals_pannel(){
 //	XMLHttpReq14.open("GET","servlet/test.do?action=getExternals",false);
 //	XMLHttpReq14.send(null);
 //	var pattern = /<.*?>/g;
-//	var external_trackItems = XMLHttpReq14.responseText.replace(pattern,"").split(","); 
+//	var external_trackItems = XMLHttpReq14.responseText.replace(pattern,"").split(",");
 //
 //	for(i = 0; i < external_trackItems.length; i++){
 //		if(external_trackItems[i] != null && external_trackItems[i] != ""){
@@ -11124,7 +11125,7 @@ $(function() {
 		startIndex = start_user - searchLength_user;
 		endIndex = end_user + searchLength_user;
 		searchLength = searchLength_user * 3;
-		
+
 		showRef();
 	});
 });
@@ -11262,7 +11263,7 @@ function sliderZoominBtn(){
 	var sliderValue = parseInt($( "#slider" ).slider( "value" ));
 	if(sliderValue < sliderMaxValue){
 		$( "#slider" ).slider( "value" , sliderValue + 1);
-		
+
 		var baseLength = trackLength_user / 10;
 		var newScale = baseLength * Math.pow(2, sliderMaxValue - sliderValue - 1);
 		var temp_start_user;
@@ -11282,10 +11283,10 @@ function sliderZoominBtn(){
 		startIndex = start_user - searchLength_user;
 		endIndex = end_user + searchLength_user;
 		searchLength = searchLength_user * 3;
-		
+
 		drawScaleboxOnCytobandsImg(searchLength_user, start_user);
 		showuserSearchIndex(start_user, end_user);
-	
+
 		showRef();
 	}
 }
@@ -11295,7 +11296,7 @@ function sliderZoomoutBtn(){
 	var sliderValue = parseInt($( "#slider" ).slider( "value" ));
 	if(sliderValue > 0){
 		$( "#slider" ).slider( "value" , sliderValue - 1);
-		
+
 		var baseLength = trackLength_user / 10;
 		var newScale = baseLength * Math.pow(2, sliderMaxValue - sliderValue + 1);
 		var temp_start_user;
@@ -11315,10 +11316,10 @@ function sliderZoomoutBtn(){
 		startIndex = start_user - searchLength_user;
 		endIndex = end_user + searchLength_user;
 		searchLength = searchLength_user * 3;
-		
+
 		drawScaleboxOnCytobandsImg(searchLength_user, start_user);
 		showuserSearchIndex(start_user, end_user);
-	
+
 		showRef();
 	}
 }
@@ -11409,7 +11410,7 @@ function loadChrBand(){
 		gneg    : "rgb(255,255,255)",
 		acen    : "rgb(217,47,39)",
 		stalk   : "rgb(100,127,164)",
-		
+
 		chr1  : "rgb(153,102,0)",
 		chr2  : "rgb(102,102,0)",
 		chr3  : "rgb(153,153,30)",
@@ -11501,7 +11502,7 @@ function loadChrBand(){
 		"stroke-linecap": "round",
 		"fill-opacity": 0.7
 	}
-		
+
 	var genome = [];
 	var chrlables=[];
 	var bands = [];
@@ -11720,7 +11721,7 @@ function loadChrBand(){
 				}
 				R.safari();
 				current = chrom;
-			}; 
+			};
 			chr[0].onmouseout = function () {
 				chr.animate({fill: ccolor, stroke: "#666"}, animaTime);
 				if(current && current != click){
@@ -11741,7 +11742,7 @@ function loadChrBand(){
 					}
 				}
 				R.safari();
-			}; 
+			};
 			chr[0].onclick = function() {
 				if(click && click != chrom){
 					burrent=null;
@@ -11786,7 +11787,7 @@ function loadChrBand(){
 							}
 							R.safari();
 							burrent = i;
-						}; 
+						};
 						bd[0].onmouseout = function () {
 							bd.animate({fill: bcolor, stroke: "#666"}, animaTime);
 							bandslables[click][i].hide();
@@ -11795,7 +11796,7 @@ function loadChrBand(){
 							if(blick && burrent != blick){
 							}
 							R.safari();
-						}; 
+						};
 						bd[0].onclick = function() {
 							gurrent=null;
 							glick=null;
@@ -11811,7 +11812,7 @@ function loadChrBand(){
 							var inputsf=chrs[click].bands[blick].from;
 							var inputet=chrs[click].bands[blick].to;
 							document.getElementById("search_field").value=chrs[click].name+":"+inputsf.toLocaleString().replace(/\.0+$/,"")+"-"+inputet.toLocaleString().replace(/\.0+$/,"");
-							
+
 
 							t_top=R.text(l-10,l*0.015,chrs[click].name+" : "+chrs[click].bands[blick].id+" : "+chrs[click].bands[blick].from).attr({font: font_size2_text,opacity:1,"text-anchor":"end"}).attr({fill: "#000"});
 							t_bot=R.text(l-10,0.985*l,chrs[click].bands[blick].to).attr({font: font_size2_text,opacity:1,"text-anchor":"end"}).attr({fill: "#000"});
@@ -11852,7 +11853,7 @@ function loadChrBand(){
 //									}
 //								}
 //								var rgbparam="rgb(255,"+ogenes[gidx].score+","+ogenes[gidx].score+")";
-//								
+//
 //								ogeneso[gidx].flag=G.rect(0,(gidx*20),8,20).attr({fill:Raphael.getRGB(rgbparam).hex,"stroke-width":0});
 								ogeneso[gidx].flag=G.rect(0,(gidx*20),8,20).attr({fill:cytoscore2color(ogenes[gidx].score),"stroke-width":0});
 								var gup=ogenes[gidx].from-chrs[click].bands[blick].from;
@@ -11899,7 +11900,7 @@ function loadChrBand(){
 										}
 										R.safari();
 										G.safari();
-									}; 
+									};
 									gen[0].onclick = function (){
 										//	document.getElementById("divv").innerHTML=chrs[click].bands[blick].id;
 										glick = gidx;
@@ -11988,7 +11989,7 @@ function loadChrBand(){
 		}
 		else if(score>=100){
 			score=0;
-		} 
+		}
 		else{
 			if(score<=0){
 				score=255;
@@ -12072,7 +12073,7 @@ function loadChrBand(){
 		 	 sectors[i].hide();
 		 	 }
 			 //R.remove();
-		 }; 
+		 };
 	}
 }
 function BJW_getStat() {
@@ -12160,7 +12161,7 @@ function BJW_rankGene() {
 
 	}
 	gene_table_html+="</div>";
-	
+
 	document.getElementById("gene_table").innerHTML=gene_table_html;
 	for(var gidx=0;gidx<ogeneNodes.length;gidx++){
 		(function (gen, gidx){
@@ -12201,7 +12202,7 @@ function addExIndividual(){
 	XMLHttpReq11.send(null);
 	indslist=XMLHttpReq11.responseText.replace(pattern,"");
 	inds_temp=indslist.split(",");
-	
+
 	var ifexists = false;
 	if(inds_temp!=null && inds_temp[0]!=""){
 		for(var idx=0;idx<inds_temp.length;idx++){
@@ -12225,7 +12226,7 @@ function addExIndividual(){
 		}
 	}
 	var sucess = false;
-	
+
 	if(ifurl){
 		if(trackId!=null && trackType!=null && trackURL!=null && trackId!="" && trackType!="" && trackURL!=""){
 			if(trackId.substring(0,1)=='_'){
@@ -12337,7 +12338,7 @@ function addExIndividual(){
 		trackItems[temp_trackItemsLength].mode = customTrackDisplayMode;
 		trackItems[temp_trackItemsLength].dataType = customTrackDataType;
 		trackItems[temp_trackItemsLength].isServer = 0;
-	
+
 		var cookieStr;
 		if($.cookie("customTrackList")) {
 			cookieStr = $.cookie("customTrackList") + ",";
@@ -12352,7 +12353,7 @@ function addExIndividual(){
 		$.cookie("customTrackList", cookieStr, {
 			expires : 10 / 24
 		});
-	
+
 		if(trackItems[temp_trackItemsLength].mode != "hide") {
 			createTrack(trackItems[temp_trackItemsLength].id, trackItems[temp_trackItemsLength].mode);
 		}
@@ -12376,9 +12377,9 @@ function pinPersonalPannel(){
 	var _top = _personalPanel.css('top');
 	var _left = _personalPanel.css('left');
 	var left_value = $("#divTrack").position().left+1110>$(window).width()-32?$(window).width()-32:$("#divTrack").position().left+1110
-	
-	_personalPanel.animate({ 
-		width: 0, 
+
+	_personalPanel.animate({
+		width: 0,
 		height: 0,
 		top: $(window).height() / 3,
 		left: left_value,
@@ -12415,7 +12416,7 @@ function generate_ppBtns(){
 	+ '<input type="button" id="closeWindowBtn"'
 	+ ' style="height:32px; width:32px; border-style:none; background: url(image/close-out-32.png); margin:1px"/></div>'
 	);
-					
+
 	ppBtns = $('#ppBtns');
 
 	unpinWindowBtn = $('#unpinWindowBtn');
@@ -12430,8 +12431,8 @@ function generate_ppBtns(){
 		ppBtns.remove();
 		isPpBtns = false;
 		_personalPanel.css("display","block");
-		_personalPanel.animate({ 
-			width: _width, 
+		_personalPanel.animate({
+			width: _width,
 			height: "auto",
 			top: _top,
 			left: _left,
@@ -12493,7 +12494,7 @@ $(document).ready(function() {
 		$("body").css("-moz-user-select","auto");
 		$("body").css("-webkit-user-select","auto");
 		$("body").css("-ms-user-select","auto");
-		
+
 		$("#search_field").css("user-select","auto");
 		$("#search_field").css("-moz-user-select","auto");
 		$("#search_field").css("-webkit-user-select","auto");
@@ -12561,7 +12562,7 @@ $(document).ready(function() {
 				drawScaleboxOnCytobandsImg(searchLength_user, start_user);
 				showuserSearchIndex(start_user, end_user);
 			}
-			
+
 			shiftKeyState = false;
 			var trackTable = document.getElementById("tableTrack");
 			var trackContentNodes = trackTable.getElementsByClassName("trackContent");
@@ -12573,7 +12574,7 @@ $(document).ready(function() {
 			});
 		}
 	});
-	
+
 	ppTracksImgareaselect = $("#ppContent").imgAreaSelect({
 		classPrefix : "divTrackImgareaselect",
 		handles : false,
@@ -12620,7 +12621,7 @@ $(document).ready(function() {
 				drawScaleboxOnCytobandsImg(searchLength_user, start_user);
 				showuserSearchIndex(start_user, end_user);
 			}
-			
+
 			shiftKeyState = false;
 			var trackTable = document.getElementById("tableTrack");
 			var trackContentNodes = trackTable.getElementsByClassName("trackContent");
@@ -12632,13 +12633,13 @@ $(document).ready(function() {
 			});
 		}
 	});
-	
+
 	var trackTable = document.getElementById("tableTrack");
 	var trackContentNodes = trackTable.getElementsByClassName("trackContent");
 	for(var i = 0; i < trackContentNodes.length; i++) {
 		trackContentNodes[i].childNodes[0].onmousedown = mouseDownRightCanvas;
 	}
-	
+
 	document.onkeydown = keyDown;
 	document.onkeyup = keyUp;
 	//document.onmouseup = mouseUp;   //the detail information of the event "onmouseup" about dragToZoomin in the file "trackMove.js"
@@ -12727,7 +12728,7 @@ function mouseDownRightCanvasInPP(){
  * Copyright (c) 2007 cody lindley
  * Licensed under the MIT License: http://www.opensource.org/licenses/mit-license.php
 */
-		  
+
 var tb_pathToImage = "./image/loading.gif";
 var getParamsURL;
 var currentTrack_IdOrSuperid_setParams;
@@ -12735,7 +12736,7 @@ var currentTrack_IdOrSuperid_setParams;
 /*!!!!!!!!!!!!!!!!! edit below this line at your own risk !!!!!!!!!!!!!!!!!!!!!!!*/
 
 //on page load call tb_init
-$(document).ready(function(){   
+$(document).ready(function(){
 	tb_init('a.thickbox, area.thickbox, input.thickbox, span.thickbox, li.thickbox');//pass where to apply thickbox
 	imgLoader = new Image();// preload image
 	imgLoader.src = tb_pathToImage;
@@ -12773,29 +12774,29 @@ function tb_show(caption, url, imageGroup,ajaxUrl) {//function called when the u
 				$("#TB_overlay").click(tb_remove);
 			}
 		}
-		
+
 		if(tb_detectMacXFF()){
 			$("#TB_overlay").addClass("TB_overlayMacFFBGHack");//use png overlay so hide flash
 		}else{
 			$("#TB_overlay").addClass("TB_overlayBG");//use background and opacity
 		}
-		
+
 		if(caption===null){caption="";}
 		$("body").append("<div id='TB_load'><img src='"+imgLoader.src+"' /></div>");//add loader to the page
 		$('#TB_load').show();//show loader
-		
+
 		var baseURL;
 	   if(url.indexOf("?")!==-1){ //ff there is a query string involved
 			baseURL = url.substr(0, url.indexOf("?"));
-	   }else{ 
+	   }else{
 	   		baseURL = url;
 	   }
-	   
+
 	   var urlString = /\.jpg$|\.jpeg$|\.png$|\.gif$|\.bmp$/;
 	   var urlType = baseURL.toLowerCase().match(urlString);
 
 		if(urlType == '.jpg' || urlType == '.jpeg' || urlType == '.png' || urlType == '.gif' || urlType == '.bmp'){//code to show images
-				
+
 			TB_PrevCaption = "";
 			TB_PrevURL = "";
 			TB_PrevHTML = "";
@@ -12808,7 +12809,7 @@ function tb_show(caption, url, imageGroup,ajaxUrl) {//function called when the u
 				TB_TempArray = $("a[@rel="+imageGroup+"]").get();
 				for (TB_Counter = 0; ((TB_Counter < TB_TempArray.length) && (TB_NextHTML === "")); TB_Counter++) {
 					var urlTypeTemp = TB_TempArray[TB_Counter].href.toLowerCase().match(urlString);
-						if (!(TB_TempArray[TB_Counter].href == url)) {						
+						if (!(TB_TempArray[TB_Counter].href == url)) {
 							if (TB_FoundURL) {
 								TB_NextCaption = TB_TempArray[TB_Counter].title;
 								TB_NextURL = TB_TempArray[TB_Counter].href;
@@ -12820,15 +12821,15 @@ function tb_show(caption, url, imageGroup,ajaxUrl) {//function called when the u
 							}
 						} else {
 							TB_FoundURL = true;
-							TB_imageCount = "Image " + (TB_Counter + 1) +" of "+ (TB_TempArray.length);											
+							TB_imageCount = "Image " + (TB_Counter + 1) +" of "+ (TB_TempArray.length);
 						}
 				}
 			}
 
 			imgPreloader = new Image();
-			imgPreloader.onload = function(){		
+			imgPreloader.onload = function(){
 			imgPreloader.onload = null;
-				
+
 			// Resizing large images - orginal by Christian Montoya edited by me.
 			var pagesize = tb_getPageSize();
 			var x = pagesize[0] - 150;
@@ -12836,51 +12837,51 @@ function tb_show(caption, url, imageGroup,ajaxUrl) {//function called when the u
 			var imageWidth = imgPreloader.width;
 			var imageHeight = imgPreloader.height;
 			if (imageWidth > x) {
-				imageHeight = imageHeight * (x / imageWidth); 
-				imageWidth = x; 
-				if (imageHeight > y) { 
-					imageWidth = imageWidth * (y / imageHeight); 
-					imageHeight = y; 
+				imageHeight = imageHeight * (x / imageWidth);
+				imageWidth = x;
+				if (imageHeight > y) {
+					imageWidth = imageWidth * (y / imageHeight);
+					imageHeight = y;
 				}
-			} else if (imageHeight > y) { 
-				imageWidth = imageWidth * (y / imageHeight); 
-				imageHeight = y; 
-				if (imageWidth > x) { 
-					imageHeight = imageHeight * (x / imageWidth); 
+			} else if (imageHeight > y) {
+				imageWidth = imageWidth * (y / imageHeight);
+				imageHeight = y;
+				if (imageWidth > x) {
+					imageHeight = imageHeight * (x / imageWidth);
 					imageWidth = x;
 				}
 			}
 			// End Resizing
-			
+
 			TB_WIDTH = imageWidth + 80;
 			TB_HEIGHT = imageHeight + 110;
-			$("#TB_window").append("<a href='' id='TB_ImageOff' title='Close'><img id='TB_Image' src='"+url+"' width='"+imageWidth+"' height='"+imageHeight+"' alt='"+caption+"'/></a>" + "<div id='TB_caption'>"+caption+"<div id='TB_secondLine'>" + TB_imageCount + TB_PrevHTML + TB_NextHTML + "</div></div><div id='TB_closeWindow'><a href='#' id='TB_closeWindowButton' title='Close'>Close</a> or Esc Key</div>"); 		
-			
+			$("#TB_window").append("<a href='' id='TB_ImageOff' title='Close'><img id='TB_Image' src='"+url+"' width='"+imageWidth+"' height='"+imageHeight+"' alt='"+caption+"'/></a>" + "<div id='TB_caption'>"+caption+"<div id='TB_secondLine'>" + TB_imageCount + TB_PrevHTML + TB_NextHTML + "</div></div><div id='TB_closeWindow'><a href='#' id='TB_closeWindowButton' title='Close'>Close</a> or Esc Key</div>");
+
 			$("#TB_closeWindowButton").click(tb_remove);
-			
+
 			if (!(TB_PrevHTML === "")) {
 				function goPrev(){
 					if($(document).unbind("click",goPrev)){$(document).unbind("click",goPrev);}
 					$("#TB_window").remove();
 					$("body").append("<div id='TB_window'></div>");
 					tb_show(TB_PrevCaption, TB_PrevURL, imageGroup);
-					return false;	
+					return false;
 				}
 				$("#TB_prev").click(goPrev);
 			}
-			
-			if (!(TB_NextHTML === "")) {		
+
+			if (!(TB_NextHTML === "")) {
 				function goNext(){
 					$("#TB_window").remove();
 					$("body").append("<div id='TB_window'></div>");
-					tb_show(TB_NextCaption, TB_NextURL, imageGroup);				
-					return false;	
+					tb_show(TB_NextCaption, TB_NextURL, imageGroup);
+					return false;
 				}
 				$("#TB_next").click(goNext);
-				
+
 			}
 
-			/*document.onkeydown = function(e){ 	
+			/*document.onkeydown = function(e){
 				if (e == null) { // ie
 					keycode = event.keyCode;
 				} else { // mozilla
@@ -12898,18 +12899,18 @@ function tb_show(caption, url, imageGroup,ajaxUrl) {//function called when the u
 						document.onkeydown = "";
 						goPrev();
 					}
-				}	
+				}
 			};*/
-			
+
 			tb_position();
 			$("#TB_load").remove();
 			$("#TB_ImageOff").click(tb_remove);
 			$("#TB_window").css({display:"block"}); //for safari using css instead of show
 			};
-			
+
 			imgPreloader.src = url;
 		}else{//code to show html
-			
+
 			var queryString = url.replace(/^[^\?]+\??/,'');
 			var params = tb_parseQuery( queryString );
 
@@ -12917,8 +12918,8 @@ function tb_show(caption, url, imageGroup,ajaxUrl) {//function called when the u
 			TB_HEIGHT = (params['height']*1) + 90 || 440; //defaults to 440 if no paramaters were added to URL
 			ajaxContentW = TB_WIDTH - 30;
 			ajaxContentH = TB_HEIGHT - 45;
-			
-			if(url.indexOf('TB_iframe') != -1){// either iframe or ajax window		
+
+			if(url.indexOf('TB_iframe') != -1){// either iframe or ajax window
 					urlNoQuery = url.split('TB_');
 					$("#TB_iframeContent").remove();
 					if(params['modal'] != "true"){//iframe no modal
@@ -12933,7 +12934,7 @@ function tb_show(caption, url, imageGroup,ajaxUrl) {//function called when the u
 						$("#TB_window").append("<div id='TB_title'><div id='TB_ajaxWindowTitle'>"+caption+"</div><div id='TB_closeAjaxWindow'><a href='#' id='TB_closeWindowButton'>Close</a></div></div><div id='TB_ajaxContent' style='width:"+ajaxContentW+"px;height:"+ajaxContentH+"px'></div>");
 						}else{//ajax modal
 						$("#TB_overlay").unbind();
-						$("#TB_window").append("<div id='TB_ajaxContent' class='TB_modal' style='width:"+ajaxContentW+"px;height:"+ajaxContentH+"px;'></div>");	
+						$("#TB_window").append("<div id='TB_ajaxContent' class='TB_modal' style='width:"+ajaxContentW+"px;height:"+ajaxContentH+"px;'></div>");
 						}
 					}else{//this means the window is already up, we are just loading new content via ajax
 						$("#TB_ajaxContent")[0].style.width = ajaxContentW +"px";
@@ -12942,17 +12943,17 @@ function tb_show(caption, url, imageGroup,ajaxUrl) {//function called when the u
 						$("#TB_ajaxWindowTitle").html(caption);
 					}
 			}
-					
+
 			$("#TB_closeWindowButton").click(tb_remove);
-			
-				if(url.indexOf('TB_inline') != -1){	
+
+				if(url.indexOf('TB_inline') != -1){
 					$("#TB_ajaxContent").append($('#' + params['inlineId']).children());
 					$("#TB_window").unload(function () {
 						$('#' + params['inlineId']).append( $("#TB_ajaxContent").children() ); // move elements back when you're finished
 					});
 					tb_position();
 					$("#TB_load").remove();
-					$("#TB_window").css({display:"block"}); 
+					$("#TB_window").css({display:"block"});
 				}else if(url.indexOf('TB_iframe') != -1){
 					tb_position();
 					if($.browser.safari){//safari needs help because it will not fire iframe onload
@@ -12967,13 +12968,13 @@ function tb_show(caption, url, imageGroup,ajaxUrl) {//function called when the u
 						$("#TB_window").css({display:"block"});
 					});
 				}
-			
+
 		}
 		if(ajaxUrl)
 			getParamsRequest(ajaxUrl);
 
 		/*if(!params['modal']){
-			document.onkeyup = function(e){ 	
+			document.onkeyup = function(e){
 				if (e == null) { // ie
 					keycode = event.keyCode;
 				} else { // mozilla
@@ -12981,10 +12982,10 @@ function tb_show(caption, url, imageGroup,ajaxUrl) {//function called when the u
 				}
 				if(keycode == 27){ // close
 					tb_remove();
-				}	
+				}
 			};
 		}*/
-		
+
 	} catch(e) {
 		//nothing here
 	}
@@ -12998,7 +12999,7 @@ function getParamsRequest(url) {
 	imgEle.setAttribute("src","./image/loading.gif");
 	settingPanel.appendChild(imgEle);
 	imgEle.setAttribute("style","position:absolute;left:35%; top:50%");
-		
+
 	XMLHttpReq.onreadystatechange = handleGetParamsRequestStateChange;
 	XMLHttpReq.open("GET", url, true);
 	XMLHttpReq.send(null);
@@ -13089,7 +13090,7 @@ function handleGetParamsRequestStateChange(){
 			centerEle.setAttribute("style","margin-top:25px;");
 			settingPanel.appendChild(centerEle);
 			centerEle.appendChild(paramsTable);
-			
+
 			var BtnTabEle = document.createElement("table");
 			BtnTabEle.setAttribute("style","margin-top:40px;");
 			var BtnTabTrEle = BtnTabEle.insertRow(-1);
@@ -13100,7 +13101,7 @@ function handleGetParamsRequestStateChange(){
 			BtnTabTdEle.setAttribute("style","text-align:center; width:200px;");
 			BtnTabTdEle.innerHTML = "<input id=\"paramReset\" type=\"button\" value=\"Reset\"/>"
 			centerEle.appendChild(BtnTabEle);
-			
+
 			document.getElementById("paramSubmit").onclick = function(p,pId){
 				return function(){
 					var trackId,trackmode,params="",values="",tempValue;
@@ -13122,9 +13123,9 @@ function handleGetParamsRequestStateChange(){
 							}
 							params = params + p[i].id + ";";
 							if(tempValue!=""){
-								tempValue = tempValue.substr(0, tempValue.length-1);						
+								tempValue = tempValue.substr(0, tempValue.length-1);
 							}else{
-								tempValue = "0";								
+								tempValue = "0";
 							}
 							values = values + tempValue + ";";
 						}
@@ -13132,7 +13133,7 @@ function handleGetParamsRequestStateChange(){
 					for(var i=0; i<trackItems.length;i++){
 						if(trackItems[i].id == trackId){
 							trackmode = trackItems[i].mode;
-							break; 
+							break;
 						}else if(trackItems[i].superid == trackId){
 							trackmode = trackItems[i].mode;
 							break;
@@ -13141,17 +13142,17 @@ function handleGetParamsRequestStateChange(){
 					if(params!=""){
 						params = params.substr(0, params.length-1);
 						values = values.substr(0, values.length-1);
-						
+
 						var setParamsURL = ("servlet/test.do?" + "action=setParams&tracks=" + trackId + "&params=" + params + "&values=" + values + "&modes=" + trackmode);
 						setParamsRequest(setParamsURL);
 					}
 				};
 			}(paramStruct, paramId);
-			
+
 			document.getElementById("paramReset").onclick = function(){
 				getParamsRequest(getParamsURL);
 			};
-			
+
 			//settingPanel.appendChild(paramsTable);
 			//settingPanel.innerHTML = XMLHttpReq.responseXML;
 		}
@@ -13168,7 +13169,7 @@ function handlesetParamsRequestStateChange(){
 	if(XMLHttpReq.readyState == 4) {
 		if(XMLHttpReq.status == 200) {
 			tb_remove();
-			
+
 			var XMLDoc = XMLHttpReq.responseXML;
 			var idTrackObj = [], superidTrackArray=[];
 			var dataType_original , group_original , mode_original;
@@ -13190,20 +13191,20 @@ function handlesetParamsRequestStateChange(){
 					dataType_original = trackItems[i].dataType;
 					group_original = trackItems[i].group;
 					mode_original = trackItems[i].mode;
-					
+
 					k++;
 				}
 			}
-			
+
 			/*
 			if(dataType_original=="BAM"){
-				
+
 			}else if(dataType_original=="VCF"||dataType_original=="GVF"){
-				
+
 			}else if(dataType_original=="BED"||dataType_original=="BEDGZ"||dataType_original=="ANNO"||dataType_original=="GRF"||dataType_original=="GDF"){
-				
+
 			}else if(dataType_original=="BW"||dataType_original=="WIG"){
-				
+
 			}*/
 			var variantsNodes = XMLDoc.getElementsByTagName(nodeXmltag);
 		//	if(superidTrackArray.length>0|| variantsNodes[0].getAttribute("superid")){// ----Del by Liran for enable refresh of non-splitted vcf tracks
@@ -13221,11 +13222,11 @@ function handlesetParamsRequestStateChange(){
 						tempTrackItemObj.group = group_original;
 						tempTrackItemObj.isServer = 1;
 						tempTrackItemObj.details = [];
-						
+
 						trackItems.push(tempTrackItemObj);
-						
+
 						createTrack(tempTrackItemObj.id, tempTrackItemObj.mode);
-						
+
 						var tempcanvasNode = document.getElementById(tempTrackItemObj.id).getElementsByTagName("canvas");
 						showVariant(tempcanvasNode[0], tempcanvasNode[1], variantsNodes[i], mode_original);
 					}
@@ -13242,17 +13243,17 @@ function handlesetParamsRequestStateChange(){
 					tempTrackItemObj.group = group_original;
 					tempTrackItemObj.isServer = 1;
 					tempTrackItemObj.details = [];
-					
+
 					trackItems.push(tempTrackItemObj);
-	
+
 					createTrack(tempTrackItemObj.id, tempTrackItemObj.mode);
-						
+
 					var tempcanvasNode = document.getElementById(tempTrackItemObj.id).getElementsByTagName("canvas");
 					showVariant(tempcanvasNode[0], tempcanvasNode[1], variantsNodes[0], mode_original);
 				}else{
 					trackItems.splice(idTrackObj.idx,1);
 					removeTrack(idTrackObj.id);
-					
+
 					for(var i=0; i<variantsNodes.length;i++){
 						var tempTrackItemObj = [];
 						tempTrackItemObj.id = variantsNodes[i].getAttribute("id");
@@ -13262,11 +13263,11 @@ function handlesetParamsRequestStateChange(){
 						tempTrackItemObj.group = group_original;
 						tempTrackItemObj.isServer = 1;
 						tempTrackItemObj.details = [];
-						
+
 						trackItems.push(tempTrackItemObj);
-						
+
 						createTrack(tempTrackItemObj.id, tempTrackItemObj.mode);
-						
+
 						var tempcanvasNode = document.getElementById(tempTrackItemObj.id).getElementsByTagName("canvas");
 						showVariant(tempcanvasNode[0], tempcanvasNode[1], variantsNodes[i], mode_original);
 					}
@@ -13352,9 +13353,10 @@ function tb_detectMacXFF() {
             window.addEventListener("message", acceptMsg, true);
         }
     })
-    var acceptMsg = function(e) {
-        console.log('从JingJun服务器传来的信息为：',e.data) ;
-        addExIndividual_lewis(e.data)
+    var acceptMsg = function(e) {  //该函数用来表示在window.onmessage事件触发时进行接收数据的处理
+
+                    alert(e.data) ;//webtwo.html页面接收数据
+         addExIndividual_lewis(e.data)
     };
 function addExIndividual_lewis(JingYunData) {
     control_upexternal = 0;
@@ -13362,7 +13364,7 @@ function addExIndividual_lewis(JingYunData) {
     var trackId = JingYunData.split('@')[0];
     var trackType = 'VCF';
     var trackURL = JingYunData.split('@')[1];
-    console.log('获取到的trackId,trackType,trackURL数据分别为：',trackId,trackType,trackURL)
+    console.log('获取到的数据分别为：',trackId,trackType,trackURL)
 
     var pattern = /<.*?>/g;
     var indslist;
@@ -13387,6 +13389,7 @@ function addExIndividual_lewis(JingYunData) {
     XMLHttpReq11.send(null);
     indslist = XMLHttpReq11.responseText.replace(pattern, "");
     inds_temp = indslist.split(",");
+    console.log('getExternals得到的响应：',inds_temp)
     if (inds_temp != null && inds_temp[0] != "") {
         for (var idx = 0; idx < inds_temp.length; idx++) {
             var ind_temp = inds_temp[idx].split(":");
@@ -13401,7 +13404,7 @@ function addExIndividual_lewis(JingYunData) {
         if (trackId.substring(0, 1) == '_') {
             alert("The track name cannot start with '_'.");
         } else if (ifexists) {
-            trackItems_setting3_lewis();
+            //alert("The track name exists.");
         } else if (trackType != "VCF" && trackType != "GVF") {
             alert("This data type is not supported.");
         } else {
@@ -13417,8 +13420,7 @@ function addExIndividual_lewis(JingYunData) {
             } else {
                 XMLHttpReq12.open("GET", "servlet/test.do?action=removeExternals&tracks=" + trackId, false);
                 XMLHttpReq12.send(null);
-                removePvar();
-                swal(err_text,'','error');
+                alert(err_text);
             }
         }
     } else {
@@ -13463,8 +13465,9 @@ function trackItems_setting3_lewis() {//individualItems setting
         }
     }
     var Pvar_id_str=exindividuals[0].samples[0]+'@'+exindividuals[0].track;
-    var Pvar_id = Pvar_id_str.split('@');
-    console.log('获取到的名称和trackID分别为：',Pvar_id);
+    console.log(Pvar_id_str)
+var Pvar_id = Pvar_id_str.split('@');
+    console.log(Pvar_id);
 				if(personalPinned){
 				}else{
 					var trParentNode = document.getElementById("divTrack");
@@ -13495,6 +13498,7 @@ function trackItems_setting3_lewis() {//individualItems setting
 				//to be test whether need closet
 
 }
+
 
 /**
  * Cookie plugin
