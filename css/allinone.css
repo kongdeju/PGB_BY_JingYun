@@ -355,7 +355,7 @@ img.displayHide {
 	height: 43px;
 	color: #FFFFFF;
 	font: 16px Candara, Arial, Helvetica;
-	margin-top:37px;
+	/*margin-top:37px;*/
 }
 #menu-center ul{
 	/* float: left; */

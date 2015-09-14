@@ -183,4 +183,6 @@ cursor: auto;padding-top: 45px;}
 	padding:0 40px;
 	cursor: pointer;
 }
-.pgb-mode{padding-top: 40px;}
+.pgb-mode{padding-top: 70px;}
+/* pgb页面标题的样式 */
+.pgb-title{margin-top:37px;line-height:30px;}
